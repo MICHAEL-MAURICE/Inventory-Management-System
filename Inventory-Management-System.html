@@ -423,7 +423,7 @@
     const key="offerEndBootstrap";
     let end = explicitEnd || localStorage.getItem(key);
     if(!end){
-      const d = new Date(); d.setHours(d.getHours()+2);
+      const d = new Date(); d.setHours(d.getHours()+24);
       end = d.toISOString(); localStorage.setItem(key,end);
     }
     const endTime = new Date(end).getTime();
