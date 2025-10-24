@@ -167,7 +167,7 @@
     </div>
   </section>
 
-  <!-- ===== Event-Sourced Ledger Pitch (your long copy) ===== -->
+  <!-- ===== Event-Sourced Ledger Pitch (long copy) ===== -->
   <section id="ledger-pitch" class="row g-3 mt-1">
     <div class="col-12">
       <div class="card bg-panel p-4 longcopy">
@@ -417,14 +417,14 @@
 <!-- Bootstrap JS (for components if needed) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // ===== Countdown: set fixed deadline OR rolling 72h =====
+  // ===== Countdown: fixed end OR rolling 2h =====
   (function(){
     const explicitEnd = null; // e.g. "2025-11-01T23:59:59"
-    const key="offerEndBootstrap";
+    const key = "offerEnd_2h"; // new key so previous 72h values won't persist
     let end = explicitEnd || localStorage.getItem(key);
     if(!end){
-      const d = new Date(); d.setHours(d.getHours()+24);
-      end = d.toISOString(); localStorage.setItem(key,end);
+      const d = new Date(); d.setHours(d.getHours() + 2); // <-- 2 HOURS
+      end = d.toISOString(); localStorage.setItem(key, end);
     }
     const endTime = new Date(end).getTime();
     const $ = id => document.getElementById(id);
@@ -441,7 +441,7 @@
     }
     tick(); const iv=setInterval(tick,1000);
   })();
-  // Year + mirror sales badge
+  // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
