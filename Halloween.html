@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40% Off .NET Source Code - Elite Solutions Halloween Sale</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables (Theme) --- */
+        :root {
+            --dark-bg: #111317;
+            --card-bg: #1a1d23;
+            --primary-orange: #f36d0a;
+            --primary-orange-hover: #fa822a;
+            --text-light: #f0f4f8;
+            --text-secondary: #a0aec0;
+            --border-color: #2d3748;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        /* --- Global & Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        a {
+            color: var(--primary-orange);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-orange-hover);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 2.5rem; }
+        h3 { font-size: 1.5rem; }
+        p { margin-bottom: 1rem; color: var(--text-secondary); }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* --- Utility & Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-orange);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-orange-hover);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 109, 10, 0.2);
+        }
+
+        .btn-lg {
+            padding: 16px 36px;
+            font-size: 1.1rem;
+        }
+
+        .bg-dark {
+            background-color: #0c0e10;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(17, 19, 23, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+        .logo a:hover {
+            color: var(--primary-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: block;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            padding: 8rem 0;
+            text-align: center;
+            background: linear-gradient(rgba(17,19,23,0.9), var(--dark-bg)), url('https://source.unsplash.com/random/1600x900/?dark,network,code') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        #hero small {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        /* --- Countdown Timer --- */
+        #countdown {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .time-box {
+            background: rgba(45, 55, 72, 0.5);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 90px;
+        }
+
+        .time-box span {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+
+        .time-box small {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* --- Coupon Box --- */
+        .coupon-box {
+            display: inline-flex;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px dashed var(--primary-orange);
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin-bottom: 2rem;
+            font-family: var(--font-heading);
+        }
+
+        .coupon-box span {
+            color: var(--text-secondary);
+            margin-right: 10px;
+        }
+
+        .coupon-box strong {
+            font-size: 1.2rem;
+            color: var(--primary-orange);
+            margin-right: 15px;
+            letter-spacing: 1px;
+        }
+
+        #copy-btn {
+            background: var(--primary-orange);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #copy-btn:hover {
+            background: var(--primary-orange-hover);
+        }
+
+        #copy-btn.copied {
+            background: #28a745; /* Green */
+        }
+
+        /* --- Products Section --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-orange);
+        }
+
+        .product-card h3 {
+            color: var(--text-light);
+        }
+
+        .product-card p {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-card a {
+            font-weight: 600;
+        }
+
+        /* --- Why Us Section --- */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .why-item {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-orange);
+        }
+
+        .why-item h4 {
+            font-size: 1.25rem;
+            color: var(--text-light);
+        }
+
+        /* --- FAQ Section --- */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item h4 {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+        }
+
+        /* --- Final CTA Section --- */
+        #final-cta {
+            background: linear-gradient(to right, var(--primary-orange), #ff8c00);
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        #final-cta h2, #final-cta p {
+            color: #fff;
+        }
+
+        #final-cta p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+        }
+
+        #final-cta .btn {
+            background: #fff;
+            color: var(--primary-orange);
+        }
+
+        #final-cta .btn:hover {
+            background: var(--dark-bg);
+            color: #fff;
+        }
+
+        .cta-code {
+            background: rgba(0,0,0,0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- Animation Classes --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition-delay: calc(var(--delay, 0) * 1ms);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.visible,
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive Media Queries --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            #hero h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.2rem; }
+            .why-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 4rem 0; }
+            h1 { font-size: 2.5rem; }
+            #hero h1 { font-size: 2.8rem; }
+            #hero .subtitle { font-size: 1.2rem; }
+            
+            .nav-links { display: none; } /* Simplifies header for demo */
+
+            .product-grid { grid-template-columns: 1fr; }
+
+            .time-box { 
+                padding: 0.8rem;
+                min-width: 70px;
+            }
+            .time-box span { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="container">
+        <nav>
+            <div class="logo">
+                <a href="https://www.elitesolutions.shop/">Elite Solutions</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#why-us">Why Us?</a></li>
+                <li><a href="#faq">FAQs</a></li>
+            </ul>
+            <a href="https://www.elitesolutions.shop/" class="btn btn-primary nav-cta" target="_blank">Shop Now</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container hero-content">
+                <h1 class="fade-in">🎃 40% Off .NET 9 Source Code</h1>
+                <p class="subtitle fade-in" data-delay="100">
+                    Once-a-year deal for the <strong>first 100 customers</strong>. Ends Halloween!
+                </p>
+                
+                <div id="countdown" class="fade-in" data-delay="200">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <small>Days</small>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <small>Hours</small>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <small>Minutes</small>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <small>Seconds</small>
+                    </div>
+                </div>
+
+                <div class="coupon-box fade-in" data-delay="300">
+                    <span>Use Code:</span>
+                    <strong id="coupon-code">sw8pve3</strong>
+                    <button id="copy-btn">Copy</button>
+                </div>
+                
+                <a href="https://www.elitesolutions.shop/" class="btn btn-primary btn-lg fade-in" data-delay="400" target="_blank">
+                    Grab Your Discount
+                </a>
+                <small class="fade-in" data-delay="500">Full source code included. No recurring fees.</small>
+            </div>
+        </section>
+
+        <section id="products" class="container reveal">
+            <h2>What's On Sale (All Include Full Source Code)</h2>
+            <div class="product-grid">
+                
+                <div class="product-card reveal">
+                    <h3>Inventory Management System (.NET 9)</h3>
+                    <p>Real-time, multi-warehouse stock with POS readiness, low-stock alerts, and vendor management.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+                
+                <div class="product-card reveal">
+                    <h3>Warehouse Management System (.NET 9)</h3>
+                    <p>Enterprise-grade ops hub with Minimal APIs, EF Core 9, JWT security, and a CQRS/MediatR design.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+                
+                <div class="product-card reveal">
+                    <h3>CRM PRO (Blazor, .NET 9)</h3>
+                    <p>Modular CRM with Sales, Finance, & Helpdesk modules. Features SignalR live KPIs and Clean Architecture.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+                
+                <div class="product-card reveal">
+                    <h3>Clean Architecture AI API (.NET 9)</h3>
+                    <p>Unified API for OpenAI, Gemini, Anthropic, & more. Endpoints for text, image gen, and health checks.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+
+                <div class="product-card reveal">
+                    <h3>Clean Architecture Project + Tests</h3>
+                    <p>Standardize your team with enforced boundaries (NetArchTest), Docker, CI, and CQRS patterns baked in.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+
+                <div class="product-card reveal">
+                    <h3>Email Validation API</h3>
+                    <p>Host-anywhere API with RFC 5322 checks, DNS/MX lookups, disposable domain detection, and typo suggestions.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+
+                <div class="product-card reveal">
+                    <h3>URL Shortener API</h3>
+                    <p>Minimal API with Redis caching for instant redirects, detailed click logs, and swappable storage.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+
+                <div class="product-card reveal">
+                    <h3>Drag & Drop Page Builder</h3>
+                    <p>Build and export clean, responsive HTML/CSS landing pages in minutes. No-code, host anywhere.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+
+                <div class="product-card reveal">
+                    <h3>Ultimate n8n Workflow Pack</h3>
+                    <p>2,000+ automations across 50+ categories. 400+ app integrations. Lifetime updates included.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us" class="bg-dark">
+            <div class="container reveal">
+                <h2>Why Developers Choose Elite Solutions</h2>
+                <div class="why-grid">
+                    <div class="why-item">
+                        <h4>Production-Ready Code</h4>
+                        <p>This isn't a toy demo. Get scalable, maintainable code you can deploy immediately.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Clean Architecture</h4>
+                        <p>We use modern .NET 9, Clean Architecture, CQRS/MediatR, and EF Core patterns.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>No SaaS Fees. Ever.</h4>
+                        <p>Buy it once, get the full source code, and host it yourself. No lock-in or recurring fees.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Launch Faster</h4>
+                        <p>Stop plumbing and start building. Our solutions give your team a massive head start.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="container reveal">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Is the 40% discount really limited to 100 customers?</h4>
+                    <p>Yes. This is a real scarcity to keep the offer fair. When the 100th redemption is used, the discount code `sw8pve3` will be disabled, even if it's before October 31st.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do I get full source code and can I use it commercially?</h4>
+                    <p>Yes. All products ship with the full source code and permissive, MIT-friendly licensing. You can check each product page for specific license details.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What stack and patterns do you use?</h4>
+                    <p>Our primary stack is .NET 9, EF Core, and SQL Server, using Clean Architecture, CQRS/MediatR, and Minimal APIs or Blazor where applicable. We focus on clean, maintainable patterns.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="final-cta" class="reveal">
+            <div class="container">
+                <h2>Final Call 👻</h2>
+                <p>The 40% discount is only for the <strong>first 100 developers</strong> or until Oct 31st, whichever comes first.</p>
+                <p>Don't be haunted by regret.</p>
+                <a href="https://www.elitesolutions.shop/" class="btn btn-primary btn-lg" target="_blank">
+                    Use Code <span class="cta-code">sw8pve3</span> & Shop Now
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Elite Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // --- 1. Countdown Timer ---
+            // Set the end date (October 31, 2025 at midnight)
+            const countdownEndDate = new Date("Oct 31, 2025 23:59:59").getTime();
+
+            const daysEl = document.getElementById("days");
+            const hoursEl = document.getElementById("hours");
+            const minutesEl = document.getElementById("minutes");
+            const secondsEl = document.getElementById("seconds");
+
+            const timerInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = countdownEndDate - now;
+
+                if (distance < 0) {
+                    // Offer expired
+                    clearInterval(timerInterval);
+                    document.getElementById("countdown").innerHTML = "<h3 style='color: var(--primary-orange)'>The offer has expired!</h3>";
+                    return;
+                }
+
+                // Calculate time
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display time (add leading zeros)
+                daysEl.innerText = days < 10 ? '0' + days : days;
+                hoursEl.innerText = hours < 10 ? '0' + hours : hours;
+                minutesEl.innerText = minutes < 10 ? '0' + minutes : minutes;
+                secondsEl.innerText = seconds < 10 ? '0' + seconds : seconds;
+
+            }, 1000);
+
+
+            // --- 2. Copy-to-Clipboard Button ---
+            const copyBtn = document.getElementById("copy-btn");
+            const couponCode = document.getElementById("coupon-code").innerText;
+
+            copyBtn.addEventListener("click", () => {
+                navigator.clipboard.writeText(couponCode).then(() => {
+                    // Success feedback
+                    copyBtn.innerText = "Copied!";
+                    copyBtn.classList.add("copied");
+                    setTimeout(() => {
+                        copyBtn.innerText = "Copy";
+                        copyBtn.classList.remove("copied");
+                    }, 2000);
+                }).catch(err => {
+                    console.error("Failed to copy code: ", err);
+                });
+            });
+
+
+            // --- 3. Fade-in Animations on Scroll ---
+            const revealElements = document.querySelectorAll(".reveal, .fade-in");
+
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add delay for hero elements
+                        const delay = entry.target.dataset.delay;
+                        if (delay) {
+                            entry.target.style.transitionDelay = `${delay}ms`;
+                        }
+                        
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target); // Stop observing after it's visible
+                    }
+                });
+            }, observerOptions);
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+        });
+    </script>
+</body>
+</html>
