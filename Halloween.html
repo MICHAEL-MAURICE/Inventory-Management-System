@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>40% Off .NET Source Code - Elite Solutions Halloween Sale</title>
+    <!-- === UPDATED TITLE === -->
+    <title>40% Off .NET Source Code - Elite Solutions Extended Sale</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -466,9 +467,10 @@
     <main>
         <section id="hero">
             <div class="container hero-content">
-                <h1 class="fade-in">🎃 40% Off .NET 9 Source Code</h1>
+                <h1 class="fade-in">🎉 40% Off .NET 9 Source Code</h1>
+                <!-- === UPDATED HERO SUBTITLE === -->
                 <p class="subtitle fade-in" data-delay="100">
-                    Once-a-year deal for the <strong>first 100 customers</strong>. Ends Halloween!
+                    <strong>SALE EXTENDED!</strong> By popular demand, the 40% off deal for the <strong>first 150 customers</strong> now ends November 4th!
                 </p>
                 
                 <div id="countdown" class="fade-in" data-delay="200">
@@ -590,9 +592,10 @@
         <section id="faq" class="container reveal">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-grid">
+                <!-- === UPDATED FAQ === -->
                 <div class="faq-item">
-                    <h4>Is the 40% discount really limited to 100 customers?</h4>
-                    <p>Yes. This is a real scarcity to keep the offer fair. When the 100th redemption is used, the discount code `sw8pve3` will be disabled, even if it's before October 31st.</p>
+                    <h4>Is the 40% discount really limited to 150 customers?</h4>
+                    <p>Yes. This is a real scarcity to keep the offer fair. When the 150th redemption is used, the discount code `sw8pve3` will be disabled, even if it's before November 4th.</p>
                 </div>
                 <div class="faq-item">
                     <h4>Do I get full source code and can I use it commercially?</h4>
@@ -608,7 +611,8 @@
         <section id="final-cta" class="reveal">
             <div class="container">
                 <h2>Final Call 👻</h2>
-                <p>The 40% discount is only for the <strong>first 100 developers</strong> or until Oct 31st, whichever comes first.</p>
+                <!-- === UPDATED FINAL CTA TEXT === -->
+                <p>The 40% discount is only for the <strong>first 150 developers</strong> or until Nov 4th, whichever comes first.</p>
                 <p>Don't be haunted by regret.</p>
                 <a href="https://www.elitesolutions.shop/" class="btn btn-primary btn-lg" target="_blank">
                     Use Code <span class="cta-code">sw8pve3</span> & Shop Now
@@ -627,8 +631,9 @@
         document.addEventListener("DOMContentLoaded", () => {
 
             // --- 1. Countdown Timer ---
-            // Set the end date (October 31, 2025 at midnight)
-            const countdownEndDate = new Date("Oct 31, 2025 23:59:59").getTime();
+            // === UPDATED COUNTDOWN DATE ===
+            // Set the end date (November 4, 2025 at midnight)
+            const countdownEndDate = new Date("Nov 4, 2025 23:59:59").getTime();
 
             const daysEl = document.getElementById("days");
             const hoursEl = document.getElementById("hours");
@@ -666,18 +671,58 @@
             const couponCode = document.getElementById("coupon-code").innerText;
 
             copyBtn.addEventListener("click", () => {
-                navigator.clipboard.writeText(couponCode).then(() => {
-                    // Success feedback
-                    copyBtn.innerText = "Copied!";
-                    copyBtn.classList.add("copied");
-                    setTimeout(() => {
-                        copyBtn.innerText = "Copy";
-                        copyBtn.classList.remove("copied");
-                    }, 2000);
-                }).catch(err => {
-                    console.error("Failed to copy code: ", err);
-                });
+                // Fallback for non-secure contexts (like file://)
+                try {
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(couponCode).then(() => {
+                            showCopiedFeedback();
+                        }).catch(err => {
+                            console.error("Failed to copy with navigator.clipboard: ", err);
+                            fallbackCopy(couponCode);
+                        });
+                    } else {
+                        fallbackCopy(couponCode);
+                    }
+                } catch (e) {
+                     console.error("Copy failed: ", e);
+                }
             });
+
+            function fallbackCopy(text) {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                
+                // Avoid scrolling to bottom
+                textArea.style.top = "0";
+                textArea.style.left = "0";
+                textArea.style.position = "fixed";
+
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    const successful = document.execCommand('copy');
+                    if (successful) {
+                        showCopiedFeedback();
+                    } else {
+                        console.error("Fallback: Unable to copy");
+                    }
+                } catch (err) {
+                    console.error("Fallback: Oops, unable to copy", err);
+                }
+
+                document.body.removeChild(textArea);
+            }
+
+            function showCopiedFeedback() {
+                copyBtn.innerText = "Copied!";
+                copyBtn.classList.add("copied");
+                setTimeout(() => {
+                    copyBtn.innerText = "Copy";
+                    copyBtn.classList.remove("copied");
+                }, 2000);
+            }
 
 
             // --- 3. Fade-in Animations on Scroll ---
