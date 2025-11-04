@@ -1,646 +1,759 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elite Solutions - Accelerate Your Development</title>
-  <style>
-    /* Basic reset and base styles */
-    :root {
-      --primary-color: #0d47a1; /* Deep Blue */
-      --primary-gradient: linear-gradient(90deg, #0d47a1 0%, #1976d2 100%);
-      --secondary-color: #ff9800; /* Orange */
-      --secondary-gradient: linear-gradient(90deg, #ff9800 0%, #f57c00 100%);
-      --text-color: #333;
-      --light-gray: #f5f5f5;
-      --white: #fff;
-      --card-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      --card-shadow-hover: 0 6px 16px rgba(0,0,0,0.1);
-      --star-color: #ffc107;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- === UPDATED TITLE === -->
+    <title>40% Off .NET Source Code - Elite Solutions Extended Sale</title>
     
-    html {
-      scroll-padding-top: 80px; /* Offset for sticky header */
-    }
-
-    body { 
-      margin: 0; 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text-color); 
-      line-height: 1.6; 
-      background: var(--white);
-    }
-    h1, h2, h3 { margin: 0 0 10px; font-weight: 700; }
-    p { margin: 0 0 15px; }
-    img { max-width: 100%; height: auto; display: block; }
-    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
-    ul { list-style: none; padding: 0; margin: 0; }
-
-    /* Navbar */
-    header { 
-      background: var(--primary-gradient); 
-      color: var(--white); 
-      padding: 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .nav-container { 
-      max-width: 1200px; 
-      margin: 0 auto; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-    }
-    .brand { 
-      font-size: 1.5em; 
-      font-weight: bold; 
-      color: var(--white);
-    }
-    .brand:hover {
-      opacity: 0.9;
-    }
-    nav ul { display: flex; gap: 25px; }
-    nav ul li a { 
-      color: var(--white); 
-      font-weight: 500; 
-      position: relative;
-    }
-    /* Hover underline effect for nav */
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--secondary-color);
-      transition: width 0.3s ease;
-    }
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-    .menu-toggle { display: none; font-size: 1.5em; cursor: pointer; }
-
-    /* Hero Section */
-    .hero { 
-      padding: 60px 20px; 
-      background: var(--light-gray); 
-    }
-    .hero-container { 
-      max-width: 1200px; 
-      margin: 0 auto; 
-      display: flex; 
-      align-items: center; 
-      justify-content: space-between; 
-      flex-wrap: wrap; 
-    }
-    .hero-text { flex: 1 1 500px; }
-    .hero-text h1 { 
-      font-size: 2.8em; 
-      color: var(--primary-color); 
-      margin-bottom: 20px; 
-      line-height: 1.2;
-    }
-    .hero-text p { font-size: 1.2em; margin-bottom: 30px; }
-    .cta-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
-    .cta-buttons a { 
-      padding: 15px 25px; 
-      border-radius: 5px; 
-      font-weight: bold; 
-      text-align: center; 
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .cta-buttons a:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
-    .btn-primary { background: var(--secondary-gradient); color: var(--white); }
-    .btn-secondary { background: var(--primary-gradient); color: var(--white); }
-    .hero-image { flex: 1 1 400px; text-align: center; padding: 20px; }
-    .hero-image img {
-      border-radius: 8px;
-    }
-
-    /* Trust Bar */
-    .trust-bar {
-      padding: 20px;
-      background: var(--white);
-      text-align: center;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .trust-bar-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .trust-bar p {
-      margin: 0;
-      font-weight: 600;
-      color: #777;
-      font-size: 1.1em;
-    }
-
-    /* Products Section */
-    .products { padding: 60px 20px; background: var(--white); }
-    .products .section-header { text-align: center; margin-bottom: 50px; }
-    .products .section-header h2 { font-size: 2.2em; color: var(--primary-color); margin-bottom: 10px; }
-    .product-grid { 
-      max-width: 1200px; 
-      margin: 0 auto; 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-      gap: 25px; 
-    }
-    .product-card { 
-      background: var(--white); 
-      box-shadow: var(--card-shadow);
-      border-radius: 8px; 
-      text-align: center; 
-      display: flex; 
-      flex-direction: column; 
-      overflow: hidden; 
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      position: relative;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--card-shadow-hover);
-    }
-    .product-badge {
-      position: absolute;
-      top: 15px;
-      left: -1px;
-      background: var(--secondary-color);
-      color: var(--white);
-      padding: 5px 12px;
-      font-size: 0.85em;
-      font-weight: bold;
-      border-radius: 0 4px 4px 0;
-      z-index: 2;
-    }
-    .product-card img {
-      width: 100%;
-      height: 200px; 
-      object-fit: cover; 
-    }
-    .product-card-content {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1; 
-    }
-    .product-card-content h3 { font-size: 1.2em; margin: 10px 0; color: var(--primary-color); }
-    .product-card-content p { font-size: 0.95em; flex-grow: 1; }
-    .product-rating {
-      color: var(--star-color);
-      font-size: 1.2em;
-      margin-bottom: 10px;
-    }
-    .product-price { 
-      margin: 15px 0; 
-      color: var(--text-color);
-      font-size: 1.1em;
-    }
-    .new-price {
-      font-weight: bold;
-      font-size: 1.4em;
-      color: var(--primary-color);
-    }
-    .old-price {
-      text-decoration: line-through;
-      color: #999;
-      margin-left: 8px;
-    }
-    .product-card-content .btn { 
-      padding: 12px 15px; 
-      background: var(--primary-gradient); 
-      color: var(--white); 
-      border: none; 
-      border-radius: 4px; 
-      text-decoration: none; 
-      font-weight: bold; 
-      display: inline-block;
-      transition: all 0.3s ease;
-    }
-    .product-card-content .btn:hover {
-      filter: brightness(1.15);
-      transform: scale(1.05);
-    }
-
-    /* Pricing Section (Replaces Membership) */
-    .pricing-section { 
-      padding: 60px 20px; 
-      background: var(--light-gray); 
-    }
-    .pricing-section .section-header { text-align: center; margin-bottom: 50px; }
-    .pricing-section .section-header h2 { font-size: 2.2em; color: var(--primary-color); margin-bottom: 10px; }
-    .pricing-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-    @media (min-width: 768px) {
-      .pricing-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    .pricing-card {
-      background: var(--white);
-      border-radius: 8px;
-      padding: 30px;
-      box-shadow: var(--card-shadow);
-      text-align: center;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    .pricing-card-popular {
-      border: 3px solid var(--primary-color);
-      transform: scale(1.05);
-    }
-    .popular-badge {
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--primary-gradient);
-      color: var(--white);
-      padding: 5px 15px;
-      font-size: 0.9em;
-      font-weight: bold;
-      border-radius: 20px;
-    }
-    .pricing-card h3 {
-      font-size: 1.5em;
-      color: var(--primary-color);
-      margin-bottom: 10px;
-    }
-    .pricing-card .price {
-      font-size: 2.5em;
-      font-weight: bold;
-      color: var(--text-color);
-      margin-bottom: 10px;
-    }
-    .pricing-card .price span {
-      font-size: 0.5em;
-      font-weight: normal;
-      color: #777;
-    }
-    .pricing-card p {
-      font-size: 1em;
-      color: #555;
-      margin-bottom: 25px;
-    }
-    .pricing-list {
-      text-align: left;
-      margin: 0 auto 30px;
-      display: inline-block;
-    }
-    .pricing-list li {
-      margin-bottom: 12px;
-      padding-left: 30px;
-      position: relative;
-    }
-    .pricing-list li::before {
-      content: '✔';
-      position: absolute;
-      left: 0;
-      color: #2e7d32; /* Green check */
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-    .pricing-list li.value-item {
-      font-weight: bold;
-      color: var(--primary-color);
-    }
-    .pricing-card .btn {
-      width: 100%;
-      padding: 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      text-decoration: none;
-      display: block;
-      transition: all 0.3s ease;
-    }
-    .btn-pricing-primary {
-      background: var(--primary-gradient);
-      color: var(--white);
-    }
-    .btn-pricing-secondary {
-      background: var(--secondary-gradient);
-      color: var(--white);
-    }
-    .btn:hover {
-      filter: brightness(1.1);
-      transform: scale(1.03);
-    }
-    .pricing-card.pricing-card-popular .btn:hover {
-      transform: scale(1.05);
-    }
-
-    /* Testimonials Section */
-    .testimonials { padding: 60px 20px; background: var(--white); }
-    .testimonials .section-header { text-align: center; margin-bottom: 40px; }
-    .testimonials .section-header h2 { font-size: 2em; color: var(--primary-color); margin-bottom: 10px; }
-    .testimonial-list { max-width: 800px; margin: 0 auto; }
-    .testimonial { 
-      margin-bottom: 30px; 
-      background: var(--light-gray);
-      padding: 25px;
-      border-radius: 8px;
-      border-left: 5px solid var(--primary-color);
-      box-shadow: var(--card-shadow);
-    }
-    .testimonial blockquote {
-      font-style: italic;
-      margin: 0;
-      padding: 0;
-      font-size: 1.1em;
-    }
-    .testimonial .author { 
-      font-weight: bold; 
-      margin-top: 15px;
-      text-align: right;
-      font-style: normal;
-      color: var(--primary-color);
-    }
-
-    /* Subscribe Section & Footer */
-    .subscribe-section { padding: 40px 20px; text-align: center; background: #333; color: var(--white); }
-    .subscribe-section p { margin-bottom: 15px; font-size: 1.1em; }
-    .subscribe-form input[type=email] { 
-      padding: 12px; 
-      width: 280px; 
-      max-width: 80%; 
-      border: none; 
-      border-radius: 4px; 
-      margin-right: 5px; 
-      margin-bottom: 10px; 
-    }
-    .subscribe-form button { 
-      padding: 12px 22px; 
-      border: none; 
-      border-radius: 4px; 
-      background: var(--secondary-gradient); 
-      color: var(--white); 
-      font-weight: bold; 
-      cursor: pointer; 
-      transition: all 0.3s ease;
-    }
-    .subscribe-form button:hover {
-      filter: brightness(1.1);
-      transform: scale(1.05);
-    }
-    .footer { 
-      background: #222; 
-      color: #bbb; 
-      padding: 15px 20px; 
-      text-align: center; 
-      font-size: 0.9em; 
-    }
-    .footer a { color: var(--white); }
-    .footer a:hover { color: var(--secondary-color); }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-      .hero-container { flex-direction: column; text-align: center; }
-      .hero-text { margin-bottom: 30px; }
-      .hero-text h1 { font-size: 2.2em; }
-      .hero-image { padding: 0; }
-      
-      nav ul { 
-        display: none; 
-        flex-direction: column; 
-        background: var(--primary-color); 
-        position: absolute; 
-        top: 79px; /* Adjust based on header height */
-        right: 0;
-        left: 0;
-        width: 100%;
-        padding: 10px 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        text-align: center;
-      }
-      nav ul.nav-active {
-        display: flex;
-      }
-      nav ul li { margin: 10px 0; }
-      .menu-toggle { display: block; }
-      .subscribe-form input[type=email] {
-        margin-right: 0;
-      }
-      .pricing-card-popular {
-        transform: scale(1); /* Don't scale up on mobile */
-      }
-    }
+    <style>
+        /* --- CSS Variables (Theme) --- */
+        :root {
+            --dark-bg: #111317;
+            --card-bg: #1a1d23;
+            --primary-orange: #f36d0a;
+            --primary-orange-hover: #fa822a;
+            --text-light: #f0f4f8;
+            --text-secondary: #a0aec0;
+            --border-color: #2d3748;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
 
-  </style>
+        /* --- Global & Reset --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        a {
+            color: var(--primary-orange);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-orange-hover);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 2.5rem; }
+        h3 { font-size: 1.5rem; }
+        p { margin-bottom: 1rem; color: var(--text-secondary); }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* --- Utility & Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-orange);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-orange-hover);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 109, 10, 0.2);
+        }
+
+        .btn-lg {
+            padding: 16px 36px;
+            font-size: 1.1rem;
+        }
+
+        .bg-dark {
+            background-color: #0c0e10;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(17, 19, 23, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+        .logo a:hover {
+            color: var(--primary-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: block;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            padding: 8rem 0;
+            text-align: center;
+            background: linear-gradient(rgba(17,19,23,0.9), var(--dark-bg)), url('https://source.unsplash.com/random/1600x900/?dark,network,code') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        #hero small {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        /* --- Countdown Timer --- */
+        #countdown {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .time-box {
+            background: rgba(45, 55, 72, 0.5);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 90px;
+        }
+
+        .time-box span {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+
+        .time-box small {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* --- Coupon Box --- */
+        .coupon-box {
+            display: inline-flex;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px dashed var(--primary-orange);
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin-bottom: 2rem;
+            font-family: var(--font-heading);
+        }
+
+        .coupon-box span {
+            color: var(--text-secondary);
+            margin-right: 10px;
+        }
+
+        .coupon-box strong {
+            font-size: 1.2rem;
+            color: var(--primary-orange);
+            margin-right: 15px;
+            letter-spacing: 1px;
+        }
+
+        #copy-btn {
+            background: var(--primary-orange);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #copy-btn:hover {
+            background: var(--primary-orange-hover);
+        }
+
+        #copy-btn.copied {
+            background: #28a745; /* Green */
+        }
+
+        /* --- Products Section --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-orange);
+        }
+
+        .product-card h3 {
+            color: var(--text-light);
+        }
+
+        .product-card p {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-card a {
+            font-weight: 600;
+        }
+
+        /* --- Why Us Section --- */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .why-item {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-orange);
+        }
+
+        .why-item h4 {
+            font-size: 1.25rem;
+            color: var(--text-light);
+        }
+
+        /* --- FAQ Section --- */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item h4 {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+        }
+
+        /* --- Final CTA Section --- */
+        #final-cta {
+            background: linear-gradient(to right, var(--primary-orange), #ff8c00);
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        #final-cta h2, #final-cta p {
+            color: #fff;
+        }
+
+        #final-cta p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+        }
+
+        #final-cta .btn {
+            background: #fff;
+            color: var(--primary-orange);
+        }
+
+        #final-cta .btn:hover {
+            background: var(--dark-bg);
+            color: #fff;
+        }
+
+        .cta-code {
+            background: rgba(0,0,0,0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- Animation Classes --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition-delay: calc(var(--delay, 0) * 1ms);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.visible,
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive Media Queries --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            #hero h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.2rem; }
+            .why-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 4rem 0; }
+            h1 { font-size: 2.5rem; }
+            #hero h1 { font-size: 2.8rem; }
+            #hero .subtitle { font-size: 1.2rem; }
+            
+            .nav-links { display: none; } /* Simplifies header for demo */
+
+            .product-grid { grid-template-columns: 1fr; }
+
+            .time-box { 
+                padding: 0.8rem;
+                min-width: 70px;
+            }
+            .time-box span { font-size: 1.8rem; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="nav-container">
-      <a href="#hero" class="brand">Elite Solutions</a>
-      <nav>
-        <span class="menu-toggle">&#9776;</span>
-        <ul id="nav-list">
-          <li><a href="#products">Products</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#subscribe">Subscribe</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <section class="hero" id="hero">
-    <div class="hero-container">
-      <div class="hero-text">
-        <h1>Stop Building from Scratch.</h1>
-        <p>Production-ready .NET solutions to help you launch in days, not months. Get full source code with no lock-in or recurring fees – just plug and deploy.</p>
-        <div class="cta-buttons">
-          <a href="#pricing" class="btn-primary">Get All-Access</a>
-          <a href="#products" class="btn-secondary">View Products</a>
+    <header class="container">
+        <nav>
+            <div class="logo">
+                <a href="https://www.elitesolutions.shop/">Elite Solutions</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#why-us">Why Us?</a></li>
+                <li><a href="#faq">FAQs</a></li>
+            </ul>
+            <a href="https://www.elitesolutions.shop/" class="btn btn-primary nav-cta" target="_blank">Shop Now</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container hero-content">
+                <h1 class="fade-in">🎉 40% Off .NET 9 Source Code</h1>
+                <!-- === UPDATED HERO SUBTITLE === -->
+                <p class="subtitle fade-in" data-delay="100">
+                    <strong>SALE EXTENDED!</strong> By popular demand, the 40% off deal for the <strong>first 150 customers</strong> now ends November 4th!
+                </p>
+                
+                <div id="countdown" class="fade-in" data-delay="200">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <small>Days</small>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <small>Hours</small>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <small>Minutes</small>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <small>Seconds</small>
+                    </div>
+                </div>
+
+                <div class="coupon-box fade-in" data-delay="300">
+                    <span>Use Code:</span>
+                    <strong id="coupon-code">sw8pve3</strong>
+                    <button id="copy-btn">Copy</button>
+                </div>
+                
+                <a href="https://www.elitesolutions.shop/" class="btn btn-primary btn-lg fade-in" data-delay="400" target="_blank">
+                    Grab Your Discount
+                </a>
+                <small class="fade-in" data-delay="500">Full source code included. No recurring fees.</small>
+            </div>
+        </section>
+
+        <section id="products" class="container reveal">
+            <h2>What's On Sale (All Include Full Source Code)</h2>
+            <div class="product-grid">
+                
+                <div class="product-card reveal">
+                    <h3>Inventory Management System (.NET 9)</h3>
+                    <p>Real-time, multi-warehouse stock with POS readiness, low-stock alerts, and vendor management.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+                
+                <div class="product-card reveal">
+                    <h3>Warehouse Management System (.NET 9)</h3>
+                    <p>Enterprise-grade ops hub with Minimal APIs, EF Core 9, JWT security, and a CQRS/MediatR design.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+                
+                <div class="product-card reveal">
+                    <h3>CRM PRO (Blazor, .NET 9)</h3>
+                    <p>Modular CRM with Sales, Finance, & Helpdesk modules. Features SignalR live KPIs and Clean Architecture.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+                
+                <div class="product-card reveal">
+                    <h3>Clean Architecture AI API (.NET 9)</h3>
+                    <p>Unified API for OpenAI, Gemini, Anthropic, & more. Endpoints for text, image gen, and health checks.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+
+                <div class="product-card reveal">
+                    <h3>Clean Architecture Project + Tests</h3>
+                    <p>Standardize your team with enforced boundaries (NetArchTest), Docker, CI, and CQRS patterns baked in.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+
+                <div class="product-card reveal">
+                    <h3>Email Validation API</h3>
+                    <p>Host-anywhere API with RFC 5322 checks, DNS/MX lookups, disposable domain detection, and typo suggestions.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+
+                <div class="product-card reveal">
+                    <h3>URL Shortener API</h3>
+                    <p>Minimal API with Redis caching for instant redirects, detailed click logs, and swappable storage.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+
+                <div class="product-card reveal">
+                    <h3>Drag & Drop Page Builder</h3>
+                    <p>Build and export clean, responsive HTML/CSS landing pages in minutes. No-code, host anywhere.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+
+                <div class="product-card reveal">
+                    <h3>Ultimate n8n Workflow Pack</h3>
+                    <p>2,000+ automations across 50+ categories. 400+ app integrations. Lifetime updates included.</p>
+                    <a href="https://www.elitesolutions.shop/" target="_blank">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us" class="bg-dark">
+            <div class="container reveal">
+                <h2>Why Developers Choose Elite Solutions</h2>
+                <div class="why-grid">
+                    <div class="why-item">
+                        <h4>Production-Ready Code</h4>
+                        <p>This isn't a toy demo. Get scalable, maintainable code you can deploy immediately.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Clean Architecture</h4>
+                        <p>We use modern .NET 9, Clean Architecture, CQRS/MediatR, and EF Core patterns.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>No SaaS Fees. Ever.</h4>
+                        <p>Buy it once, get the full source code, and host it yourself. No lock-in or recurring fees.</p>
+                    </div>
+                    <div class="why-item">
+                        <h4>Launch Faster</h4>
+                        <p>Stop plumbing and start building. Our solutions give your team a massive head start.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="container reveal">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <!-- === UPDATED FAQ === -->
+                <div class="faq-item">
+                    <h4>Is the 40% discount really limited to 150 customers?</h4>
+                    <p>Yes. This is a real scarcity to keep the offer fair. When the 150th redemption is used, the discount code `sw8pve3` will be disabled, even if it's before November 4th.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do I get full source code and can I use it commercially?</h4>
+                    <p>Yes. All products ship with the full source code and permissive, MIT-friendly licensing. You can check each product page for specific license details.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What stack and patterns do you use?</h4>
+                    <p>Our primary stack is .NET 9, EF Core, and SQL Server, using Clean Architecture, CQRS/MediatR, and Minimal APIs or Blazor where applicable. We focus on clean, maintainable patterns.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="final-cta" class="reveal">
+            <div class="container">
+                <h2>Final Call 👻</h2>
+                <!-- === UPDATED FINAL CTA TEXT === -->
+                <p>The 40% discount is only for the <strong>first 150 developers</strong> or until Nov 4th, whichever comes first.</p>
+                <p>Don't be haunted by regret.</p>
+                <a href="https://www.elitesolutions.shop/" class="btn btn-primary btn-lg" target="_blank">
+                    Use Code <span class="cta-code">sw8pve3</span> & Shop Now
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Elite Solutions. All rights reserved.</p>
         </div>
-      </div>
-      <div class="hero-image">
-        <img src="https://public-files.gumroad.com/xdx90qn0o39lzcfymwut95c82ilz" alt="Elite Solutions Product Showcase" />
-      </div>
-    </div>
-  </section>
-
-  <section class="trust-bar">
-    <div class="trust-bar-container">
-      <p>Trusted by Startup CTOs, Indie Hackers, and Enterprise Architects</p>
-    </div>
-  </section>
-
-  <section class="products" id="products">
-    <div class="section-header">
-      <h2>Our Solutions</h2>
-      <p>Pre-built, enterprise-grade tools to jumpstart your projects</p>
-    </div>
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="https://public-files.gumroad.com/ysfudcwid5c4hcbl0s5wc5ijhaew" alt="Inventory Management System" />
-        <div class="product-card-content">
-          <h3>Inventory Management System</h3>
-          <p>Multi-warehouse, POS-ready inventory system with real-time stock tracking.</p>
-          <div class="product-rating">★ ★ ★ ★ ★</div>
-          <div class="product-price">
-            <span class="new-price">$20</span>
-            <span class="old-price">$40</span>
-          </div>
-          <a href="https://www.elitesolutions.shop/" class="btn" target="_blank" rel="noopener noreferrer">View in Store</a>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-badge">Best Seller</div>
-        <img src="https://public-files.gumroad.com/2n5eabd7k40udgq9d2lbnzew2k76" alt="CRM PRO" />
-        <div class="product-card-content">
-          <h3>CRM PRO</h3>
-          <p>Enterprise-grade CRM with a modular, real-time architecture to close deals faster.</p>
-          <div class="product-rating">★ ★ ★ ★ ★</div>
-          <div class="product-price">
-            <span class="new-price">$42</span>
-            <span class="old-price">$84</span>
-          </div>
-          <a href="https://www.elitesolutions.shop/" class="btn" target="_blank" rel="noopener noreferrer">View in Store</a>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="https://public-files.gumroad.com/oppjxsho5zm4fvul4i7hwbcc0yc8" alt="Drag & Drop Page Builder" />
-        <div class="product-card-content">
-          <h3>Drag & Drop Page Builder</h3>
-          <p>No-code builder for creating responsive landing pages effortlessly.</p>
-          <div class="product-rating">★ ★ ★ ★ ☆</div>
-          <div class="product-price">
-            <span class="new-price">$20</span>
-            <span class="old-price">$40</span>
-          </div>
-          <a href="https://www.elitesolutions.shop/" class="btn" target="_blank" rel="noopener noreferrer">View in Store</a>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="https://public-files.gumroad.com/g7up1fcfo7zye98g0anyp5hvx882" alt="Ultimate n8n Workflow Pack" />
-        <div class="product-card-content">
-          <h3>Ultimate n8n Workflow Pack</h3>
-          <p>2,000+ ready-to-use automation workflows to streamline your business.</p>
-          <div class="product-rating">★ ★ ★ ★ ★</div>
-          <div class="product-price">
-            <span class="new-price">$20</span>
-            <span class="old-price">$40</span>
-          </div>
-          <a href="https://www.elitesolutions.shop/" class="btn" target="_blank" rel="noopener noreferrer">View in Store</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="pricing-section" id="pricing">
-    <div class="section-header">
-      <h2>Find the Perfect Plan</h2>
-      <p>Start saving time today. Own the code forever.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>Single Product</h3>
-        <div class="price">$20+</div>
-        <p>Buy what you need, when you need it. Perfect for a specific project.</p>
-        <ul class="pricing-list">
-          <li>✔ Full Source Code</li>
-          <li>✔ Lifetime License</li>
-          <li>✔ Pay Per Product</li>
-          <li>&nbsp;</li> </ul>
-        <a href="#products" class="btn btn-pricing-primary">Shop Products</a>
-      </div>
-      <div class="pricing-card pricing-card-popular">
-        <div class="popular-badge">Most Popular</div>
-        <h3>Elite Gold All‑Access</h3>
-        <div class="price">$99 <span>/ one-time</span></div>
-        <p>Get unlimited access to every product, plus all future releases. The ultimate value.</p>
-        <ul class="pricing-list">
-          <li>✔ Access All Current Products</li>
-          <li>✔ Access All Future Products</li>
-          <li>✔ Priority Support</li>
-          <li class="value-item">🚀 Includes $200+ of products!</li>
-        </ul>
-        <a href="https://www.elitesolutions.shop/" class="btn btn-pricing-secondary" target="_blank" rel="noopener noreferrer">Join Membership</a>
-      </div>
-      <div class="pricing-card">
-        <h3>Team License</h3>
-        <div class="price">Custom</div>
-        <p>Equip your entire development team with our complete solutions.</p>
-        <ul class="pricing-list">
-          <li>✔ All-Access Features</li>
-          <li>✔ 5-Developer License</li>
-          <li>✔ Premium Team Support</li>
-          <li>&nbsp;</li> </ul>
-        <a href="#subscribe" class="btn btn-pricing-primary">Contact Sales</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonials" id="testimonials">
-    <div class="section-header">
-      <h2>What Our Customers Say</h2>
-    </div>
-    <div class="testimonial-list">
-      <div class="testimonial">
-        <blockquote>"We launched 3 months faster by using Elite Solutions packages. The quality and time saved are unmatched. The All-Access Pass is a no-brainer."</blockquote>
-        <p class="author">– John S., Startup CTO</p>
-      </div>
-      <div class="testimonial">
-        <blockquote>"Finally, a cost-effective way to get enterprise-grade software without ongoing fees. Highly recommend these solutions."</blockquote>
-        <p class="author">– Lisa M., Software Engineer</p>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <p>&copy; 2025 Elite Solutions. All rights reserved. <a href="#hero">Back to top</a></p>
-  </footer>
-
-  <script>
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navList = document.getElementById('nav-list');
+    </footer>
     
-    menuToggle.addEventListener('click', () => {
-      navList.classList.toggle('nav-active');
-    });
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetElement = document.querySelector(this.getAttribute('href'));
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        if (navList.classList.contains('nav-active')) {
-          navList.classList.remove('nav-active');
-        }
-      });
-    });
+            // --- 1. Countdown Timer ---
+            // === UPDATED COUNTDOWN DATE ===
+            // Set the end date (November 4, 2025 at midnight)
+            const countdownEndDate = new Date("Nov 4, 2025 23:59:59").getTime();
 
-    // Form submission
-    const subscribeForm = document.getElementById('subscribe-form');
-    
-    subscribeForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      subscribeNewsletter();
-    });
+            const daysEl = document.getElementById("days");
+            const hoursEl = document.getElementById("hours");
+            const minutesEl = document.getElementById("minutes");
+            const secondsEl = document.getElementById("seconds");
 
-    function subscribeNewsletter() {
-      const emailInput = document.getElementById('subscribe-email');
-      const email = emailInput.value;
-      if (email) {
-        alert("Thank you for subscribing, " + email + "!");
-        emailInput.value = ''; 
-      }
-    }
-  </script>
+            const timerInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = countdownEndDate - now;
+
+                if (distance < 0) {
+                    // Offer expired
+                    clearInterval(timerInterval);
+                    document.getElementById("countdown").innerHTML = "<h3 style='color: var(--primary-orange)'>The offer has expired!</h3>";
+                    return;
+                }
+
+                // Calculate time
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display time (add leading zeros)
+                daysEl.innerText = days < 10 ? '0' + days : days;
+                hoursEl.innerText = hours < 10 ? '0' + hours : hours;
+                minutesEl.innerText = minutes < 10 ? '0' + minutes : minutes;
+                secondsEl.innerText = seconds < 10 ? '0' + seconds : seconds;
+
+            }, 1000);
+
+
+            // --- 2. Copy-to-Clipboard Button ---
+            const copyBtn = document.getElementById("copy-btn");
+            const couponCode = document.getElementById("coupon-code").innerText;
+
+            copyBtn.addEventListener("click", () => {
+                // Fallback for non-secure contexts (like file://)
+                try {
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(couponCode).then(() => {
+                            showCopiedFeedback();
+                        }).catch(err => {
+                            console.error("Failed to copy with navigator.clipboard: ", err);
+                            fallbackCopy(couponCode);
+                        });
+                    } else {
+                        fallbackCopy(couponCode);
+                    }
+                } catch (e) {
+                     console.error("Copy failed: ", e);
+                }
+            });
+
+            function fallbackCopy(text) {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                
+                // Avoid scrolling to bottom
+                textArea.style.top = "0";
+                textArea.style.left = "0";
+                textArea.style.position = "fixed";
+
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    const successful = document.execCommand('copy');
+                    if (successful) {
+                        showCopiedFeedback();
+                    } else {
+                        console.error("Fallback: Unable to copy");
+                    }
+                } catch (err) {
+                    console.error("Fallback: Oops, unable to copy", err);
+                }
+
+                document.body.removeChild(textArea);
+            }
+
+            function showCopiedFeedback() {
+                copyBtn.innerText = "Copied!";
+                copyBtn.classList.add("copied");
+                setTimeout(() => {
+                    copyBtn.innerText = "Copy";
+                    copyBtn.classList.remove("copied");
+                }, 2000);
+            }
+
+
+            // --- 3. Fade-in Animations on Scroll ---
+            const revealElements = document.querySelectorAll(".reveal, .fade-in");
+
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add delay for hero elements
+                        const delay = entry.target.dataset.delay;
+                        if (delay) {
+                            entry.target.style.transitionDelay = `${delay}ms`;
+                        }
+                        
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target); // Stop observing after it's visible
+                    }
+                });
+            }, observerOptions);
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+        });
+    </script>
 </body>
 </html>
