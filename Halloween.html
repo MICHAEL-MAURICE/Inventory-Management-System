@@ -3,144 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENDS SATURDAY: 45% OFF Flash Sale!</title>
+    <title>ENDS SATURDAY: 45% OFF Flash Sale | Elite Solutions</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
+        /* --- CSS Variables (NEW) --- */
+        :root {
+            --primary-blue: #0066FF;
+            --primary-blue-dark: #0052D4;
+            --primary-orange: #ff8c00;
+            --primary-orange-dark: #e67e00;
+            --primary-red: #d9480f;
+            --text-dark: #222;
+            --text-light: #555;
+            --bg-light: #f7f9fc;
+            --bg-white: #ffffff;
+            --border-color: #dfe3e8;
+        }
+    
         /* --- Reset & Global --- */
         body {
             margin: 0;
             padding: 0;
-            background-color: #f4f8fb; /* Light blue-grey background */
+            background-color: var(--bg-light);
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            color: var(--text-dark);
         }
 
-        .email-body {
+        .container {
             width: 100%;
-            max-width: 800px; /* Wider for a more modern layout */
-            margin: 20px auto;
-            background-color: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #dfe3e8;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            max-width: 1100px; /* Wider for a landing page */
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
-        .content {
-            padding: 30px 40px;
+        section {
+            padding: 50px 0;
+            margin-bottom: 20px;
         }
 
-        /* --- Clickable Header --- */
-        .header-link {
-            text-decoration: none;
+        /* --- Page Header (NEW) --- */
+        .page-header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
-
-        .header {
-            text-align: center;
-            padding: 30px 0;
-            background: linear-gradient(to right, #0052D4, #4364F7, #6FB1FC); /* Professional blue gradient */
-            color: #ffffff;
-            border-bottom: 1px solid #f0f0f0;
+        
+        .page-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .header-title {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 900;
             letter-spacing: 1px;
-            color: #ffffff; /* Ensure color is white */
+            color: var(--primary-blue-dark);
+            text-decoration: none;
+        }
+        
+        .header-cta {
+            font-size: 16px;
+            font-weight: 700;
+            background-color: var(--primary-orange);
+            color: var(--bg-white);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .header-cta:hover {
+            background-color: var(--primary-orange-dark);
         }
 
-        /* --- Typography --- */
-        h1 {
-            font-size: 34px;
-            font-weight: 700;
-            color: #222;
-            margin-top: 0;
-            margin-bottom: 15px;
+        /* --- Hero Section (NEW) --- */
+        .hero {
+            text-align: center;
+            padding: 70px 0 50px 0;
+            background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%);
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin: 0 0 15px 0;
             line-height: 1.2;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .sub-headline {
+            font-size: 22px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .hero .sub-headline strong {
+            color: var(--primary-red);
+            font-weight: 700;
+        }
+
+        .hero .cta-button {
+            margin-top: 20px;
+        }
+
+        .hero .trust-signals {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        /* --- Countdown Timer (NEW) --- */
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .timer-block {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            min-width: 80px;
+        }
+        .timer-block span {
+            display: block;
             text-align: center;
         }
-
-        h2 {
-            font-size: 26px;
+        .timer-block .number {
+            font-size: 36px;
             font-weight: 700;
-            color: #333;
-            margin-top: 45px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #0066FF; /* Accent color border */
-            padding-bottom: 10px;
+            color: var(--primary-blue);
+            line-height: 1.1;
         }
-
-        h3 {
-            font-size: 18px;
-            color: #0056b3; /* Brand blue */
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        p, li {
-            font-size: 16px;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        ul, ol {
-            padding-left: 25px;
-            margin-bottom: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        a {
-            color: #0066FF;
-            text-decoration: none;
+        .timer-block .label {
+            font-size: 14px;
+            color: var(--text-light);
             font-weight: 500;
+            margin-top: 5px;
         }
 
-            a:hover {
-                text-decoration: underline;
-            }
-
-        code {
-            font-family: "Courier New", Courier, monospace;
-            background-color: #eef2f5;
-            padding: 3px 6px;
-            border-radius: 5px;
-            font-size: 0.9em;
-            color: #d9480f;
-        }
-
-        /* --- Sales & Persuasion Elements --- */
-
-        .urgency-box {
-            background: #fff8e1; /* Light yellow */
-            border: 1px solid #ffe58f;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-            text-align: center; /* Center the new timer */
+        /* --- Offer & Urgency Section --- */
+        .offer-section {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 800px;
+            margin: -30px auto 30px auto; /* Pulls up into hero */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            border: 1px solid var(--border-color);
+            position: relative;
+            z-index: 10;
         }
 
         .urgency-header {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 700;
-            color: #333;
-            margin: 0 0 10px 0;
+            color: var(--text-dark);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            margin-bottom: 15px; /* Add space for the timer */
+            margin-bottom: 15px;
         }
-
-        /* --- REMOVED: Countdown Timer CSS --- */
+        
+        .urgency-header .seats-left {
+            color: var(--primary-red);
+            font-weight: 700;
+        }
 
         .progress-container {
             width: 100%;
@@ -149,10 +197,10 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid #ddd;
+            margin-bottom: 25px;
         }
 
         .progress-bar {
-            /* 50 out of 100 claimed */
             width: 50%; /* UPDATED */
             height: 100%;
             background: linear-gradient(to right, #ffc107, #f76707); /* Orange gradient */
@@ -166,20 +214,19 @@
 
         .coupon-box {
             background-color: #f0f7ff;
-            border: 2px dashed #0066FF;
+            border: 2px dashed var(--primary-blue);
             padding: 25px;
             text-align: center;
             border-radius: 8px;
-            margin: 25px 0;
+        }
+        
+        .coupon-box .coupon-pretitle {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+            font-weight: 500;
         }
 
-            .coupon-box .coupon-pretitle {
-                font-size: 16px;
-                color: #333;
-                margin: 0;
-            }
-        
-        /* --- NEW: Coupon Code Wrapper --- */
         .coupon-code-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -192,20 +239,20 @@
         .coupon-code {
             font-size: 32px;
             font-weight: 900;
-            color: #d9480f; /* Strong orange */
+            color: var(--primary-red);
             font-family: "Courier New", Courier, monospace;
-            margin: 0; /* Reset margin */
+            margin: 0;
             padding: 10px 15px;
             background: #fff;
             border-radius: 8px;
             border: 1px solid #e0e0e0;
         }
-        
+
         .copy-button {
             font-family: 'Roboto', sans-serif;
             font-size: 16px;
             font-weight: 700;
-            background-color: #0066FF;
+            background-color: var(--primary-blue);
             color: #ffffff;
             border: none;
             padding: 12px 20px;
@@ -215,88 +262,166 @@
         }
 
         .copy-button:hover {
-            background-color: #0052D4;
+            background-color: var(--primary-blue-dark);
             transform: translateY(-1px);
         }
 
         .copy-button.copied {
-            background-color: #28a745; /* Green check color */
+            background-color: #28a745;
         }
-        /* --- END NEW --- */
 
         .coupon-details {
             font-size: 16px;
-            color: #555;
+            color: var(--text-light);
             margin-top: 10px;
+        }
+        
+        /* --- Shared Styles --- */
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+        
+        h2 {
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 19px;
+            color: var(--primary-blue-dark);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #eef2f5;
+            padding: 3px 6px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            color: var(--primary-red);
         }
 
         .cta-button {
-            display: block;
-            background-color: #ff8c00; /* Bright, unmissable orange */
+            display: inline-block;
+            background-color: var(--primary-orange);
             color: #ffffff;
             padding: 18px 30px;
             font-size: 20px;
             font-weight: 700;
             text-decoration: none;
             border-radius: 8px;
-            margin: 30px auto;
             text-align: center;
-            width: 80%;
-            max-width: 400px;
             box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
             transition: all 0.3s ease;
         }
 
-            .cta-button:hover {
-                background-color: #e67e00;
-                box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
-                transform: translateY(-2px);
-                text-decoration: none;
-                color: #ffffff; /* Ensure hover color is white */
-            }
+        .cta-button:hover {
+            background-color: var(--primary-orange-dark);
+            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        /* --- Social Proof Section (NEW) --- */
+        .social-proof {
+            background: var(--bg-white);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+        }
+        
+        .testimonial-card .stars {
+            font-size: 20px;
+            color: #f5c518; /* Gold stars */
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-card .quote {
+            font-size: 17px;
+            font-style: italic;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .testimonial-card .author {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 20px;
+        }
 
         /* --- Product Grid --- */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
 
-        /* Clickable Product Card Link */
         .product-link {
             display: block;
             text-decoration: none;
-            color: inherit; /* Inherit text color */
-            height: 100%; /* Make link fill the card */
+            color: inherit;
+            height: 100%;
         }
 
         .product-card {
-            background: #ffffff;
-            border: 1px solid #dfe3e8;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 25px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             transition: all 0.3s ease;
-            height: 100%; /* Ensure cards are same height if in grid */
-            box-sizing: border-box; /* Include padding in height */
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
         }
-
-            .product-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 8px 20px rgba(0, 102, 255, 0.1);
-                border-color: #0066FF;
-            }
-
-            .product-card h3 {
-                font-size: 19px;
-            }
-
-            .product-card p {
-                font-size: 15px;
-                margin-bottom: 15px;
-            }
-
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.1);
+            border-color: var(--primary-blue);
+        }
+        
+        .product-card p {
+            font-size: 15px;
+            margin-bottom: 15px;
+            flex-grow: 1; /* Pushes 'best-for' to bottom */
+        }
+        
         .best-for {
             font-size: 14px !important;
             font-weight: 500;
@@ -304,391 +429,536 @@
             background: #f4f8fb;
             padding: 8px 12px;
             border-radius: 6px;
+            margin-top: auto; /* Aligns to bottom */
         }
 
         .nudge-tag {
             display: inline-block;
-            background-color: #fff0f0; /* Light red */
-            color: #d9480f; /* Strong orange/red */
+            background-color: #fff0f0;
+            color: var(--primary-red);
             padding: 4px 10px;
             font-size: 12px;
             font-weight: 700;
-            border-radius: 20px; /* Pill shape */
+            border-radius: 20px;
             margin-bottom: 12px;
             border: 1px solid #ffc9c9;
         }
 
-        /* --- Lists & FAQs --- */
-
+        /* --- Benefits & How-to-Redeem --- */
+        .how-to-redeem {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 40px auto;
+            border: 1px solid var(--border-color);
+        }
+        .how-to-redeem h2 {
+            text-align: left;
+            margin-bottom: 20px;
+        }
         .how-to-redeem ol {
             font-size: 17px;
             font-weight: 500;
             color: #333;
+            padding-left: 25px;
+            line-height: 1.8;
+        }
+        .how-to-redeem li {
+            margin-bottom: 10px;
         }
 
-        .faq-item {
-            margin-bottom: 15px;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 15px;
+        /* --- Benefits List --- */
+        .benefits-section {
+            max-width: 800px;
+            margin: 0 auto;
         }
-
-            .faq-item:last-child {
-                border-bottom: none;
-            }
-
-        .faq-q {
-            font-weight: 700;
-            color: #333;
-            font-size: 17px;
-        }
-
-        .faq-a {
-            margin-top: 8px;
-            padding-left: 10px;
-            border-left: 3px solid #0066FF;
-        }
-
+        
         .why-list {
             list-style-type: none;
             padding-left: 0;
         }
 
-            .why-list li {
-                font-size: 17px;
-                font-weight: 500;
-                position: relative;
-                padding-left: 30px;
-                margin-bottom: 12px;
-            }
+        .why-list li {
+            font-size: 18px;
+            font-weight: 500;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
 
-                .why-list li::before {
-                    content: '✔';
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    color: #28a745; /* Green check */
-                    font-size: 18px;
-                    font-weight: bold;
-                }
+        .why-list li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #28a745; /* Green check */
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        /* --- FAQ Section --- */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 700;
+            color: #333;
+            font-size: 18px;
+        }
+        .faq-a {
+            margin-top: 8px;
+            padding-left: 10px;
+            border-left: 3px solid var(--primary-blue);
+        }
+        .faq-a p {
+            margin: 0;
+        }
 
         /* --- Final Call & Footer --- */
-
         .final-call {
-            background: #0052D4;
+            background: var(--primary-blue-dark);
             color: #ffffff;
             text-align: center;
-            padding: 30px 40px;
-            border-radius: 8px;
+            padding: 50px 40px;
+            border-radius: 12px;
             margin-top: 30px;
         }
-
-            .final-call h2 {
-                color: #ffffff;
-                margin-top: 0;
-                border-bottom: none;
-            }
-
-            .final-call p {
-                color: #f0f0f0;
-                font-size: 17px;
-                line-height: 1.6;
-            }
-
-            .final-call code {
-                background: #ffffff;
-                color: #d9480f;
-                font-size: 1.1em;
-                font-weight: bold;
-            }
-
-            .final-call .cta-button {
-                background: #ff8c00;
-                box-shadow: none;
-            }
-
-                .final-call .cta-button:hover {
-                    background: #e67e00;
-                }
-
+        .final-call h2 {
+            color: #ffffff;
+            margin-top: 0;
+            border-bottom: none;
+        }
+        .final-call p {
+            color: #f0f0f0;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+        .final-call code {
+            background: #ffffff;
+            color: var(--primary-red);
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .final-call .cta-button {
+            background: var(--primary-orange);
+            box-shadow: none;
+        }
+        .final-call .cta-button:hover {
+            background: var(--primary-orange-dark);
+        }
+        
+        /* --- Footer --- */
         .footer {
             text-align: center;
-            padding: 30px 40px;
-            font-size: 13px;
+            padding: 40px 0;
+            font-size: 14px;
             color: #888;
-            border-top: 1px solid #f0f0f0;
-            background-color: #fafafa;
+            border-top: 1px solid var(--border-color);
+            margin-top: 30px;
+            background: var(--bg-white);
         }
-
-            .footer p {
-                font-size: 13px;
-                color: #888;
-                margin: 5px 0;
-            }
-
-            .footer a {
-                color: #555;
-                font-weight: bold;
-            }
-
-        @media (max-width: 600px) {
-            .content {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
-            h2 {
-                font-size: 22px;
-            }
-
-            .cta-button {
-                width: 95%;
-            }
-
-            .product-grid {
-                /* Stack to single column on mobile */
+        .footer p {
+            font-size: 14px;
+            color: #888;
+            margin: 5px 0;
+        }
+        .footer a {
+            color: #555;
+            font-weight: bold;
+        }
+        
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .testimonial-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 15px;
+            }
+            .page-header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 34px;
+            }
+            .hero .sub-headline {
+                font-size: 18px;
+            }
+            .countdown-timer {
+                gap: 10px;
+            }
+            .timer-block {
+                padding: 10px;
+                min-width: 60px;
+            }
+            .timer-block .number {
+                font-size: 26px;
+            }
+            .timer-block .label {
+                font-size: 12px;
+            }
+            .offer-section {
+                padding: 25px;
+            }
+            h2 {
+                font-size: 28px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
             .coupon-code-wrapper {
                 gap: 10px;
             }
-
             .coupon-code {
                 font-size: 26px;
             }
+            .cta-button {
+                width: 100%;
+                box-sizing: border-box;
+                font-size: 18px;
+                padding: 16px;
+            }
         }
+
     </style>
 </head>
 <body>
 
-    <div class="email-body">
+    <header class="page-header">
+        <div class="container">
+            <a href="https://www.elitesolutions.shop/" class="header-title">ELITE SOLUTIONS</a>
+            <a href="#offer" class="header-cta">Get 45% Off Now</a>
+        </div>
+    </header>
 
-        <a href="https://www.elitesolutions.shop/" class="header-link">
-            <div class="header">
-                <div class="header-title">ELITE SOLUTIONS</div>
+    <main>
+
+        <section class="hero">
+            <div class="container">
+                <h1>Stop Reinventing the Wheel.<br>Ship Your .NET Project in Days.</h1>
+                <p class="sub-headline">
+                    Get full, production-ready source code for complex systems.
+                    <strong>FLASH SALE:</strong> Get <strong>45% OFF</strong> all projects, but it
+                    <strong>ends this Saturday</strong> or when the last <strong>50 seats</strong> are claimed!
+                </p>
+
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="timer-block">
+                        <span class="number" id="days">0</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="timer-block">
+                        <span class="number" id="hours">0</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="timer-block">
+                        <span class="number" id="minutes">0</span>
+                        <span class="label">Minutes</span>
+                    </div>
+                    <div class="timer-block">
+                        <span class="number" id="seconds">0</span>
+                        <span class="label">Seconds</span>
+                    </div>
+                </div>
+
+                <a href="#offer" class="cta-button">👉 Claim My 45% Discount</a>
+                <p class="trust-signals">Full .NET 9 Source Code Included · MIT-Friendly License · One-Time Payment</p>
             </div>
-        </a>
+        </section>
 
-        <div class="content">
-            <h1>ENDS SATURDAY: 45% OFF Flash Sale!</h1>
-
-            <p style="text-align: center; font-size: 18px; color: #333;">Hi , this is a final heads-up. The <strong>45% OFF</strong> flash sale <strong>ends this Saturday</strong>!</p>
-
-            <div class="urgency-box">
-                <div class="urgency-header">
-                    <strong>SALE ENDS SATURDAY: 45% OFF</strong>
-                    <span><span style="color: #d9480f; font-weight: 700;">Only 50</span> Seats Left!</span>
-                </div>
-                <!-- REMOVED: Countdown Timer HTML -->
-                <div class="progress-container">
-                    <!-- 50 out of 100 claimed -->
-                    <div class="progress-bar" style="width: 50%;">50 / 100 Claimed</div>
-                </div>
+        <section id="offer" class="offer-section">
+            <div class="urgency-header">
+                <strong>SALE ENDS SATURDAY: 45% OFF</strong>
+                <span class="seats-left">Only 50 Seats Left!</span>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 50%;">50 / 100 Claimed</div>
             </div>
 
             <div class="coupon-box">
-                <div class="coupon-pretitle">Use this coupon at checkout:</div>
-                <!-- NEW: Updated structure for copy button -->
+                <div class="coupon-pretitle">Use this coupon at checkout for 45% OFF:</div>
                 <div class="coupon-code-wrapper">
                     <div class="coupon-code" id="couponCode">ELITEBLACK45</div>
                     <button class="copy-button" id="copyButton">Copy Code</button>
                 </div>
                 <div class="coupon-details">
-                    <strong>ENDS SATURDAY:</strong> Offer valid until all 100 seats are claimed or Saturday, whichever comes first!
+                    Offer valid until all 100 seats are claimed or Saturday, whichever comes first!
                 </div>
             </div>
+            
+            <a href="https://www.elitesolutions.shop/" class="cta-button" style="margin: 25px auto 0 auto; display: block; max-width: 400px;">
+                Shop All Projects
+            </a>
+        </section>
 
-            <a href="https://www.elitesolutions.shop/" class="cta-button">👉 Claim Your Seat Now (45% Off)</a>
 
-            <h2>🛒 What’s On Sale (All Include Full Source Code)</h2>
-
-            <div class="product-grid">
-
-                <!-- Product 1 -->
-                <a href="https://www.elitesolutions.shop/" class="product-link">
-                    <div class="product-card">
-                        <span class="nudge-tag">🔥 HOT SELLER</span>
-                        <h3>1) Inventory Management System (.NET 9)</h3>
-                        <p>Real-time stock, low-stock alerts, vendors/POs/shipments, role-based access, dashboards, & SQL scripts.</p>
-                        <p class="best-for"><strong>Best for:</strong> Teams moving off spreadsheets to a real, deployable inventory stack.</p>
+        <section class="social-proof">
+            <div class="container">
+                <h2>Trusted by Hundreds of Developers</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"The WMS project saved us at least 3 months of development time. The code is incredibly clean, follows modern practices, and was easy to customize. A total no-brainer at this price."</p>
+                        <div class="author">Alex T., Senior .NET Developer</div>
                     </div>
-                </a>
-
-                <!-- Product 2 -->
-                <a href="https://www.elitesolutions.shop/" class="product-link">
-                    <div class="product-card">
-                        <span class="nudge-tag">⭐ POPULAR CHOICE</span>
-                        <h3>2) Warehouse Management System (.NET 9)</h3>
-                        <p>Dashboards, sales, purchase, inventory, membership; EF Core 9; JWT + granular roles; CQRS/MediatR; SQL scripts.</p>
-                        <p class="best-for"><strong>Best for:</strong> Companies that need a scalable operations hub, not just inventory.</p>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"I bought the Clean Architecture template to standardize our new microservices. It's fantastic. It includes architecture tests, CI/CD setup, and all the boilerplate I hate writing."</p>
+                        <div class="author">Maria S., Tech Lead</div>
                     </div>
-                </a>
-
-                <!-- Product 3 -->
-                <a href="https://www.elitesolutions.shop/" class="product-link">
-                    <div class="product-card">
-                        <h3>3) CRM PRO (Blazor, .NET 9)</h3>
-                        <p>Sales, Purchase, Helpdesk, Finance, Projects; SignalR live KPIs; light/dark/RTL; Clean Architecture + CQRS.</p>
-                        <p class="best-for"><strong>Best for:</strong> Agencies/startups needing a flexible CRM with enterprise patterns.</p>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"I'm a freelancer, and the CRM PRO (Blazor) let me deliver a complex project for a client way ahead of schedule. They were thrilled, and I looked like a hero. Will be buying more."</p>
+                        <div class="author">David K., Freelance Developer</div>
                     </div>
-                </a>
-
-                <!-- Product 4 -->
-                <a href="https://www.elitesolutions.shop/" class="product-link">
-                    <div class="product-card">
-                        <h3>4) Clean Architecture Web API + Unified AI</h3>
-                        <p>One API, many AI providers (OpenAI/Azure/Gemini/Anthropic/Cohere), rate limiting, secrets, Swagger, HTTPS.</p>
-                        <p class="best-for"><strong>Best for:</strong> Teams shipping AI features without re-plumbing every provider.</p>
-                    </div>
-                </a>
-
-                <!-- Product 5 -->
-                <a href="https://www.elitesolutions.shop/" class="product-link">
-                    <div class="product-card">
-                        <h3>5) Clean Architecture Project + Tests</h3>
-                        <p>Domain/Application/Infrastructure/Web/Tests, NetArchTest & ArchUnitNET, Docker, GitHub Actions CI, JWT scaffolding.</p>
-                        <p class="best-for"><strong>Best for:</strong> Standardizing structure and avoiding spaghetti architecture.</p>
-                    </div>
-                </a>
-
-                <!-- Product 6 -->
-                <a href="https://www.elitesolutions.shop/" class="product-link">
-                    <div class="product-card">
-                        <h3>6) Email Validation API</h3>
-                        <p>RFC 5322 + DNS/MX checks, 100k+ disposable domains, typo suggestions, <code>/api/validate</code>, host anywhere.</p>
-                        <p class="best-for"><strong>Best for:</strong> SaaS & security-minded teams reducing fake signups and bounces.</p>
-                    </div>
-                </a>
-
-                <!-- Product 7 -->
-                <a href="https://www.elitesolutions.shop/" class="product-link">
-                    <div class="product-card">
-                        <h3>7) URL Shortener API</h3>
-                        <p>Minimal APIs + Base62, Redis caching, detailed click logs, swappable storage (SQLite/Postgres/SQL Server), Docker.</p>
-                        <p class="best-for"><strong>Best for:</strong> Embedding short links into apps or internal knowledge systems.</p>
-                    </div>
-                </a>
-
-                <!-- Product 8 -->
-                <a href="https://www.elitesolutions.shop/" class="product-link">
-                    <div class="product-card">
-                        <h3>8) Drag & Drop Page Builder</h3>
-                        <p>Build/export responsive HTML/CSS in minutes, pre-built blocks, traits panel, device previews, portable output.</p>
-                        <p class="best-for"><strong>Best for:</strong> Launch pages, link-in-bio, portfolios, quick marketing sites.</p>
-                    </div>
-                </a>
-
-                <!-- Product 9 -->
-                <a href="https://www.elitesolutions.shop/" class="product-link">
-                    <div class="product-card">
-                        <h3>9) Ultimate n8n Workflow Pack</h3>
-                        <p>2,000+ Automations. 50+ categories, 400+ app integrations, AI agent templates, import JSON & run, lifetime updates.</p>
-                        <p class="best-for"><strong>Best for:</strong> Automating growth and ops without hiring a full team.</p>
-                    </div>
-                </a>
+                </div>
             </div>
+        </section>
 
-            <div class="how-to-redeem">
-                <h2>How to Redeem (Takes 30 Seconds)</h2>
-                <ol>
-                    <li>Go to <a href="https://www.elitesolutions.shop/">elitesolutions.shop</a></li>
-                    <li>Add any product(s) to your cart</li>
-                    <li>At checkout, apply coupon code <code>ELITEBLACK45</code></li>
-                    <li>Complete your purchase!</li>
-                </ol>
-            </div>
 
-            <h2>Why Developers Choose Elite Solutions</h2>
-            <ul class="why-list">
-                <li>Production-ready code, not toy demos</li>
-                <li>Clean Architecture you can scale and maintain</li>
-                <li>MIT-friendly licensing and no recurring SaaS fees</li>
-                <li>Faster launches and clear patterns your team can follow</li>
-            </ul>
+        <section class="products-section">
+            <div class="container">
+                <h2>Explore the Projects (All 45% Off)</h2>
+                <p style="text-align: center; font-size: 18px; max-width: 700px; margin: -20px auto 40px auto; color: var(--text-light);">
+                    All projects include full .NET 9 source code, Clean Architecture, and are ready to deploy.
+                </p>
 
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <p class="faq-q">Is the 45% discount really limited?</p>
-                <p class="faq-a"><strong>Yes.</strong> This flash sale ends on <strong>Saturday</strong> and is also strictly limited to <strong>only 100 seats total</strong>. <strong>50 have already been claimed!</strong> When all 100 seats are claimed (or Saturday arrives), the discount code <code>ELITEBLACK45</code> will be permanently disabled.</p>
+                <div class="product-grid">
+                    <a href="https://www.elitesolutions.shop/" class="product-link">
+                        <div class="product-card">
+                            <span class="nudge-tag">🔥 HOT SELLER</span>
+                            <h3>1) Inventory Management System (.NET 9)</h3>
+                            <p>Real-time stock, low-stock alerts, vendors/POs/shipments, role-based access, dashboards, & SQL scripts.</p>
+                            <p class="best-for"><strong>Best for:</strong> Teams moving off spreadsheets to a real, deployable inventory stack.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.elitesolutions.shop/" class="product-link">
+                        <div class="product-card">
+                            <span class="nudge-tag">⭐ POPULAR CHOICE</span>
+                            <h3>2) Warehouse Management System (.NET 9)</h3>
+                            <p>Dashboards, sales, purchase, inventory, membership; EF Core 9; JWT + granular roles; CQRS/MediatR; SQL scripts.</p>
+                            <p class="best-for"><strong>Best for:</strong> Companies that need a scalable operations hub, not just inventory.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.elitesolutions.shop/" class="product-link">
+                        <div class="product-card">
+                            <h3>3) CRM PRO (Blazor, .NET 9)</h3>
+                            <p>Sales, Purchase, Helpdesk, Finance, Projects; SignalR live KPIs; light/dark/RTL; Clean Architecture + CQRS.</p>
+                            <p class="best-for"><strong>Best for:</strong> Agencies/startups needing a flexible CRM with enterprise patterns.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.elitesolutions.shop/" class="product-link">
+                        <div class="product-card">
+                            <h3>4) Clean Architecture Web API + Unified AI</h3>
+                            <p>One API, many AI providers (OpenAI/Azure/Gemini/Anthropic/Cohere), rate limiting, secrets, Swagger, HTTPS.</p>
+                            <p class="best-for"><strong>Best for:</strong> Teams shipping AI features without re-plumbing every provider.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.elitesolutions.shop/" class="product-link">
+                        <div class="product-card">
+                            <h3>5) Clean Architecture Project + Tests</h3>
+                            <p>Domain/Application/Infrastructure/Web/Tests, NetArchTest & ArchUnitNET, Docker, GitHub Actions CI, JWT scaffolding.</p>
+                            <p class="best-for"><strong>Best for:</strong> Standardizing structure and avoiding spaghetti architecture.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.elitesolutions.shop/" class="product-link">
+                        <div class="product-card">
+                            <h3>6) Email Validation API</h3>
+                            <p>RFC 5322 + DNS/MX checks, 100k+ disposable domains, typo suggestions, <code>/api/validate</code>, host anywhere.</p>
+                            <p class="best-for"><strong>Best for:</strong> SaaS & security-minded teams reducing fake signups and bounces.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.elitesolutions.shop/" class="product-link">
+                        <div class="product-card">
+                            <h3>7) URL Shortener API</h3>
+                            <p>Minimal APIs + Base62, Redis caching, detailed click logs, swappable storage (SQLite/Postgres/SQL Server), Docker.</p>
+                            <p class="best-for"><strong>Best for:</strong> Embedding short links into apps or internal knowledge systems.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.elitesolutions.shop/" class="product-link">
+                        <div class="product-card">
+                            <h3>8) Drag & Drop Page Builder</h3>
+                            <p>Build/export responsive HTML/CSS in minutes, pre-built blocks, traits panel, device previews, portable output.</p>
+                            <p class="best-for"><strong>Best for:</strong> Launch pages, link-in-bio, portfolios, quick marketing sites.</p>
+                        </div>
+                    </a>
+                    <a href="https://www.elitesolutions.shop/" class="product-link">
+                        <div class="product-card">
+                            <h3>9) Ultimate n8n Workflow Pack</h3>
+                            <p>2,000+ Automations. 50+ categories, 400+ app integrations, AI agent templates, import JSON & run, lifetime updates.</p>
+                            <p class="best-for"><strong>Best for:</strong> Automating growth and ops without hiring a full team.</p>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <div class="faq-item">
-                <p class="faq-q">Do I get full source code and can I use it commercially?</p>
-                <p class="faq-a"><strong>Yes.</strong> All products ship with the full source code and permissive licensing. See each product page for specific details.</p>
-            </div>
-            <div class="faq-item">
-                <p class="faq-q">What stack and patterns do you use?</p>
-                <p class="faq-a">Our core stack is <strong>.NET 9, Clean Architecture, CQRS/MediatR, EF Core, Serilog, and Minimal APIs/Blazor</strong> where applicable.</p>
-            </div>
-
-            <div class="final-call">
-                <h2>⏰ SALE ENDS SATURDAY (Only 50 Seats Left!)</h2>
-                <p>This is it! The <strong>45% OFF</strong> discount (code <code>ELITEBLACK45</code>) disappears <strong>this Saturday</strong> or as soon as the last 50 seats are claimed. Don't miss out!</p>
-                <a href="https://www.elitesolutions.shop/" class="cta-button">Claim My 45% Discount Now</a>
-            </div>
-
+        </section>
+        
+        <div class="how-to-redeem">
+            <h2>How to Redeem (Takes 30 Seconds)</h2>
+            <ol>
+                <li>Go to <a href="https://www.elitesolutions.shop/">elitesolutions.shop</a></li>
+                <li>Add any product(s) to your cart</li>
+                <li>At checkout, apply coupon code <code>ELITEBLACK45</code></li>
+                <li>Complete your purchase!</li>
+            </ol>
         </div>
 
-        <div class="footer">
-            <p>Store: <a href="https://www.elitesolutions.shop/">https://www.elitesolutions.shop/</a></p>
-            <p>&copy; 2025 Elite Solutions. All rights reserved.</p>
-            <p>Happy coding!</p>
-        </div>
+        <section class="benefits-section">
+            <div class="container">
+                <h2>Why Developers Choose Elite Solutions</h2>
+                <ul class="why-list">
+                    <li>Production-ready code, not toy demos</li>
+                    <li>Clean Architecture you can scale and maintain</li>
+                    <li>MIT-friendly licensing and no recurring SaaS fees</li>
+                    <li>Faster launches and clear patterns your team can follow</li>
+                    <li>Save hundreds of hours of boilerplate setup</li>
+                </ul>
+            </div>
+        </section>
 
-    </div>
+        <section class="faq-section">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <p class="faq-q">Is the 45% discount really limited?</p>
+                    <div class="faq-a">
+                        <p><strong>Yes.</strong> This flash sale ends on <strong>Saturday</strong> and is also strictly limited to <strong>only 100 seats total</strong>. <strong>50 have already been claimed!</strong> When all 100 seats are claimed (or Saturday arrives), the discount code <code>ELITEBLACK45</code> will be permanently disabled.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">Do I get full source code and can I use it commercially?</p>
+                    <div class="faq-a">
+                        <p><strong>Yes.</strong> All products ship with the full source code and permissive licensing. See each product page for specific details.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q">What stack and patterns do you use?</p>
+                    <div class="faq-a">
+                        <p>Our core stack is <strong>.NET 9, Clean Architecture, CQRS/MediatR, EF Core, Serilog, and Minimal APIs/Blazor</strong> where applicable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-call-section">
+            <div class="container">
+                <div class="final-call">
+                    <h2>⏰ SALE ENDS SATURDAY (Only 50 Seats Left!)</h2>
+                    <p>This is it! The <strong>45% OFF</strong> discount (code <code>ELITEBLACK45</code>) disappears <strong>this Saturday</strong> or as soon as the last 50 seats are claimed. Don't miss out on saving months of work.</p>
+                    <a href="https://www.elitesolutions.shop/" class="cta-button">Claim My 45% Discount Now</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Store: <a href="https://www.elitesolutions.shop/">https://www.elitesolutions.shop/</a></p>
+        <p>&copy; 2025 Elite Solutions. All rights reserved.</p>
+        <p>Happy coding!</p>
+    </footer>
+
 
     <script>
-            // console.log("Elite Solutions sale page loaded. 50 seats left.");
+        // --- Copy to Clipboard Functionality ---
+        const copyButton = document.getElementById('copyButton');
+        const couponCode = document.getElementById('couponCode');
+
+        if (copyButton && couponCode) {
+            copyButton.addEventListener('click', function() {
+                const codeText = couponCode.innerText;
+                const tempTextarea = document.createElement('textarea');
+                tempTextarea.value = codeText;
+                tempTextarea.style.position = 'absolute';
+                tempTextarea.style.left = '-9999px';
+                document.body.appendChild(tempTextarea);
+
+                tempTextarea.select();
+                try {
+                    document.execCommand('copy');
+                    copyButton.innerText = 'Copied!';
+                    copyButton.classList.add('copied');
+                    setTimeout(function() {
+                        copyButton.innerText = 'Copy Code';
+                        copyButton.classList.remove('copied');
+                    }, 2500);
+                } catch (err) {
+                    console.error('Failed to copy code: ', err);
+                    copyButton.innerText = 'Error';
+                    setTimeout(function() {
+                        copyButton.innerText = 'Copy Code';
+                    }, 2500);
+                }
+                document.body.removeChild(tempTextarea);
+            });
+        }
+
+        // --- Countdown Timer Logic (NEW) ---
+        (function() {
+            // Set the end date to the NEXT Saturday.
+            const today = new Date();
+            const dayOfWeek = today.getDay(); // 0=Sunday, 1=Monday, ..., 6=Saturday
+            const daysUntilSaturday = (6 - dayOfWeek + 7) % 7;
             
-            // --- NEW: Copy to Clipboard Functionality ---
-            const copyButton = document.getElementById('copyButton');
-            const couponCode = document.getElementById('couponCode');
-
-            if (copyButton && couponCode) {
-                copyButton.addEventListener('click', function() {
-                    const codeText = couponCode.innerText;
-
-                    // Create a temporary textarea element to hold the text
-                    const tempTextarea = document.createElement('textarea');
-                    tempTextarea.value = codeText;
-                    tempTextarea.style.position = 'absolute';
-                    tempTextarea.style.left = '-9999px';
-                    document.body.appendChild(tempTextarea);
-
-                    // Select and copy the text
-                    tempTextarea.select();
-                    try {
-                        // Use execCommand for broad compatibility, especially in iFrames
-                        document.execCommand('copy');
-                        
-                        // Visual feedback
-                        copyButton.innerText = 'Copied!';
-                        copyButton.classList.add('copied');
-
-                        // Reset button text after 2.5 seconds
-                        setTimeout(function() {
-                            copyButton.innerText = 'Copy Code';
-                            copyButton.classList.remove('copied');
-                        }, 2500);
-
-                    } catch (err) {
-                        console.error('Failed to copy code: ', err);
-                        copyButton.innerText = 'Error';
-                        // Reset button text after 2.5 seconds
-                        setTimeout(function() {
-                            copyButton.innerText = 'Copy Code';
-                        }, 2500);
-                    }
-
-                    // Remove the temporary element
-                    document.body.removeChild(tempTextarea);
-                });
+            // If today is Saturday, set it for *next* Saturday (or end of today if you prefer)
+            // This logic sets it to the *end* of the upcoming Saturday.
+            let saleEndDate = new Date();
+            if (daysUntilSaturday === 0 && today.getHours() < 24) {
+                 // If it's Saturday, the sale ends today.
+                 saleEndDate.setDate(today.getDate());
+            } else if (daysUntilSaturday === 0) {
+                // If it's *past* Saturday, set to next week
+                 saleEndDate.setDate(today.getDate() + 7);
+            } else {
+                // Set to the upcoming Saturday
+                saleEndDate.setDate(today.getDate() + daysUntilSaturday);
             }
-            // --- END NEW ---
+            
+            // Set time to 23:59:59 (end of Saturday)
+            saleEndDate.setHours(23, 59, 59, 999);
+            
+            const saleEndTime = saleEndDate.getTime();
 
-            // --- REMOVED: Countdown Timer Logic ---
+            const timer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = saleEndTime - now;
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdownTimer").innerHTML = "<h3 style='color: var(--primary-red);'>SALE HAS ENDED</h3>";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+                document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+                
+            }, 1000);
+        })();
 
     </script>
 
