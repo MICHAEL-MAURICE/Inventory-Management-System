@@ -118,6 +118,48 @@
             box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
         }
 
+        /* --- Discount Banner --- */
+        #discount-banner {
+            background-color: var(--color-secondary);
+            padding: 40px 0;
+            text-align: center;
+        }
+        #discount-banner h2 {
+            color: var(--color-dark); /* Dark text on light bg for pop */
+            border-bottom: none;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        #discount-banner p {
+            color: var(--color-dark);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+        .discount-code {
+            display: inline-block;
+            background: #ffffff;
+            color: var(--color-dark);
+            border: 2px dashed var(--color-primary);
+            padding: 10px 25px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: "Courier New", Courier, monospace;
+            border-radius: 8px;
+            margin: 10px 0;
+            user-select: all; /* Make it easy to select */
+            cursor: pointer; /* Show it's clickable */
+            transition: background-color 0.3s ease;
+        }
+        .discount-code:hover {
+            background-color: #f0f0f0;
+        }
+        .urgency-text {
+            font-weight: bold;
+            color: #222; /* Slightly different dark */
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+
         /* --- Feature Sections (Grid Layout) --- */
         .grid-3 {
             display: grid;
@@ -188,6 +230,23 @@
             font-size: 1.2rem;
             margin-bottom: 30px;
         }
+        
+        /* Discount Reminder Style */
+        #final-cta .cta-discount-reminder {
+            font-size: 1.1rem;
+            color: var(--color-light);
+            font-weight: 500;
+            margin-bottom: 25px;
+            margin-top: -10px;
+        }
+        #final-cta .cta-discount-reminder code {
+            background: var(--card-bg);
+            color: var(--color-secondary);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+
 
         /* --- Footer --- */
         .footer {
@@ -214,6 +273,15 @@
             </a>
         </div>
     </header>
+
+    <section id="discount-banner">
+        <div class="container">
+            <h2>BLACK FRIDAY EARLY ACCESS!</h2>
+            <p>Get <strong>30% OFF</strong> your purchase with the code below.</p>
+            <div class="discount-code" title="Click to copy code">ELITEBLACK30</div>
+            <p class="urgency-text"><strong>Uses:</strong> 50 / 100 (Only 50 codes left!)</p>
+        </div>
+    </section>
 
     <section id="inside">
         <div class="container">
@@ -283,6 +351,7 @@
                     <p>Aspire brings up Postgres, RabbitMQ, the API, and all workers with a single command. Get to coding instantly.</p>
                 </div>
                 <div class="card">
+<div>
                     <div class="icon">🧩</div>
                     <h3>Popular Use Cases</h3>
                     <p>Perfect for Gumroad/Stripe purchases (provisioning licenses), n8n/Zapier workflows, or internal microservice event fan-out.</p>
@@ -322,6 +391,11 @@
         <div class="container">
             <h2>Stop Wasting Weeks Building Boilerplate</h2>
             <p>Get a production-ready, scalable webhook solution today and focus on your business logic.</p>
+            
+            <p class="cta-discount-reminder">
+                Don't forget your <strong>30% OFF</strong> discount! Use code: <code>ELITEBLACK30</code>
+            </p>
+
             <a href="https://www.elitesolutions.shop/l/Webhooks?layout=profile" target="_blank" class="cta-button" id="bottom-cta-button">
                 Buy Now and Ship This Week &nbsp; &rarr;
             </a>
@@ -335,19 +409,37 @@
     </footer>
 
     <script>
-        // Simple script to log CTA clicks (optional)
-        // You can expand this to add more interactive elements
-        
         document.addEventListener('DOMContentLoaded', (event) => {
             const ctaButtons = document.querySelectorAll('.cta-button');
             
             ctaButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     console.log(`CTA Button "${button.id}" clicked. Redirecting to store...`);
-                    // The link is handled by the <a> tag's href attribute.
-                    // You could add analytics tracking here.
                 });
             });
+
+            // Click-to-copy for discount code
+            const discountCodeElement = document.querySelector('.discount-code');
+            if (discountCodeElement) {
+                discountCodeElement.addEventListener('click', () => {
+                    const code = discountCodeElement.innerText;
+                    navigator.clipboard.writeText(code).then(() => {
+                        // Give visual feedback
+                        const originalText = discountCodeExample;
+                        discountCodeElement.innerText = 'Copied!';
+                        discountCodeElement.style.backgroundColor = '#00a086';
+                        discountCodeElement.style.color = '#ffffff';
+
+                        setTimeout(() => {
+                            discountCodeElement.innerText = originalText;
+                            discountCodeElement.style.backgroundColor = '#ffffff';
+                            discountCodeElement.style.color = 'var(--color-dark)';
+                        }, 2000); // Revert after 2 seconds
+                    }).catch(err => {
+                        console.error('Failed to copy text: ', err);
+                    });
+                });
+            }
 
             console.log('Landing page loaded and ready.');
         });
