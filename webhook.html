@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webhooks for .NET 9 (Aspire + RabbitMQ + Postgres)</title>
+    
+    <style>
+        /* CSS Resets and Basic Setup */
+        :root {
+            --color-primary: #007bff;
+            --color-primary-hover: #0056b3;
+            --color-secondary: #00c9a7;
+            --color-secondary-hover: #00a086;
+            --color-dark: #1a1a1a;
+            --color-light: #f4f4f4;
+            --color-text: #e0e0e0;
+            --color-text-darker: #aaaaaa;
+            --card-bg: #2a2a2a;
+            --border-color: #444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-dark);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h1, h2, h3 {
+            color: var(--color-light);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; border-bottom: 2px solid var(--color-primary); padding-bottom: 10px; display: inline-block; }
+        h3 { font-size: 1.5rem; color: var(--color-secondary); }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--color-text-darker);
+        }
+
+        /* --- Header & Hero Section --- */
+        .header {
+            background: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.9)), url('https://images.unsplash.com/photo-1522252234503-e356532cafd5?auto=format&fit=crop&q=80&w=1740&ixlib=rb-4.0.3') no-repeat center center/cover;
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--color-primary);
+        }
+
+        .header h1 {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header h1 span {
+            color: var(--color-secondary);
+        }
+
+        .header .sub-headline {
+            font-size: 1.8rem;
+            color: var(--color-light);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* --- Call to Action (CTA) Button --- */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-secondary);
+            color: var(--color-dark);
+            font-size: 1.25rem;
+            font-weight: bold;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 201, 167, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--color-secondary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 201, 167, 0.4);
+        }
+
+        .cta-button-secondary {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+        .cta-button-secondary:hover {
+            background-color: var(--color-primary-hover);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+        }
+
+        /* --- Feature Sections (Grid Layout) --- */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .card .icon {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 15px;
+        }
+
+        /* --- Q&A Section --- */
+        #qa {
+            background-color: var(--card-bg);
+        }
+        .qa-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+        .qa-item:last-child {
+            border-bottom: none;
+        }
+        .qa-item h3 {
+            color: var(--color-secondary);
+            margin-bottom: 10px;
+        }
+        .qa-item p {
+            color: var(--color-text-darker);
+            margin-bottom: 0;
+        }
+        .qa-item code {
+            background: #333;
+            color: #f1c40f;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+
+        /* --- Final CTA Section --- */
+        #final-cta {
+            background-color: var(--color-primary);
+            text-align: center;
+        }
+        #final-cta h2 {
+            color: var(--color-light);
+            border-bottom: none;
+            font-size: 2.2rem;
+        }
+        #final-cta p {
+            color: var(--color-light);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            background: #111;
+            color: var(--color-text-darker);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>Ship Reliable Webhooks in <span>Hours, Not Weeks</span></h1>
+            <p class="sub-headline">
+                The complete .NET 9 solution with Aspire, RabbitMQ & Postgres.
+            </p>
+            <p class="sub-headline">Get the full receiver, processing workers, and orchestration stack—ready to run.</p>
+            <a href="https://www.elitesolutions.shop/l/Webhooks?layout=profile" target="_blank" class="cta-button" id="main-cta-button">
+                Get the Solution Now &nbsp; &rarr;
+            </a>
+        </div>
+    </header>
+
+    <section id="inside">
+        <div class="container">
+            <h2 style="text-align: center; display: block; margin-bottom: 40px;">What’s Inside the Box?</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon">🚀</div>
+                    <h3>.NET Aspire AppHost</h3>
+                    <p>One-line setup for Postgres & RabbitMQ. Manages service wiring, health checks, and startup order (`WaitFor`).</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📥</div>
+                    <h3>Webhooks.Api</h3>
+                    <p>A secure Minimal API receiver with EF Core, `WebhookSubscription` models, and a `WebhookDispatcher` service.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">⚙️</div>
+                    <h3>Webhooks.Processing</h3>
+                    <p>Dedicated background worker (3 replicas by default) with RabbitMQ consumers for parallel, high-throughput handling.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📦</div>
+                    <h3>Contracts Package</h3>
+                    <p>Typed messages like `WebhookTriggered` for clean, versionable integration between your API and workers.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📊</div>
+                    <h3>Observability</h3>
+                    <p>Pre-configured OpenTelemetry diagnostic setup in both the API and the worker service for instant tracing.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🐘</div>
+                    <h3>Database & Broker</h3>
+                    <p>Includes PostgreSQL with all EF Core migrations ready to run, plus a local RabbitMQ broker with management UI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2 style="text-align: center; display: block; margin-bottom: 40px;">Key Features for Rapid Scaling</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon">🛡️</div>
+                    <h3>Secure & Fast Receiver</h3>
+                    <p>The API is built to handle provider signatures and timestamps, while background processing keeps your request threads fast.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📈</div>
+                    <h3>Horizontal Scaling</h3>
+                    <p>Scale your background workers horizontally by simply increasing replica count. RabbitMQ handles the load distribution.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">✅</div>
+                    <h3>Built-in Reliability</h3>
+                    <p>Tracks `WebhookDeliveryAttempt` in the DB, giving you the perfect foundation for retries, backoff, and idempotency.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🏗️</div>
+                    <h3>Clean Architecture</h3>
+                    <p>A modular design (API, Processing, Contracts) that drops perfectly into existing CQRS or DDD-style setups.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">⚡</div>
+                    <h3>One-Command Startup</h3>
+                    <p>Aspire brings up Postgres, RabbitMQ, the API, and all workers with a single command. Get to coding instantly.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🧩</div>
+                    <h3>Popular Use Cases</h3>
+                    <p>Perfect for Gumroad/Stripe purchases (provisioning licenses), n8n/Zapier workflows, or internal microservice event fan-out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="qa">
+        <div class="container">
+            <h2 style="text-align: center; display: block; margin-bottom: 40px;">Your Questions, Answered</h2>
+            
+            <div class="qa-item">
+                <h3>Q1. What exactly do I get?</h3>
+                <p>A complete .NET 9 webhook stack: receiver API + background workers + Aspire orchestration for Postgres and RabbitMQ, with OpenTelemetry and EF Core migrations—ready to customize.</p>
+            </div>
+            <div class="qa-item">
+                <h3>Q2. Does it work with Gumroad Ping / Stripe / n8n?</h3>
+                <p>Yes. Webhooks are standard HTTP POST callbacks. This solution provides the receiver and contracts; you just add a small validator/mapper for each provider. Gumroad's "Ping" is the purchase callback you'll handle with this.</p>
+            </div>
+            <div class="qa-item">
+                <h3>Q3. How do I scale processing?</h3>
+                <p>Just increase the consumer replicas (defaults to 3) in your Aspire config. RabbitMQ handles the distribution automatically.</p>
+            </div>
+            <div class="qa-item">
+                <h3>Q4. Is reliability covered?</h3>
+                <p>Delivery attempts are stored in Postgres so you can implement retries, backoff, and idempotency cleanly. The split API/worker design prevents long request times and dropped connections.</p>
+            </div>
+            <div class="qa-item">
+                <h3>Q5. What do I need installed?</h3>
+                <p>.NET 9 SDK, Docker (for Aspire-managed Postgres/RabbitMQ), and your preferred IDE. Aspire brings the services up for you.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="final-cta">
+        <div class="container">
+            <h2>Stop Wasting Weeks Building Boilerplate</h2>
+            <p>Get a production-ready, scalable webhook solution today and focus on your business logic.</p>
+            <a href="https://www.elitesolutions.shop/l/Webhooks?layout=profile" target="_blank" class="cta-button" id="bottom-cta-button">
+                Buy Now and Ship This Week &nbsp; &rarr;
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025. All rights reserved. Stop building, start shipping.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to log CTA clicks (optional)
+        // You can expand this to add more interactive elements
+        
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const ctaButtons = document.querySelectorAll('.cta-button');
+            
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    console.log(`CTA Button "${button.id}" clicked. Redirecting to store...`);
+                    // The link is handled by the <a> tag's href attribute.
+                    // You could add analytics tracking here.
+                });
+            });
+
+            console.log('Landing page loaded and ready.');
+        });
+    </script>
+
+</body>
+</html>
