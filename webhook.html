@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webhooks for .NET 9 (Aspire + RabbitMQ + Postgres)</title>
     
+    <!-- Make sure to replace this with your actual favicon path -->
+    <link rel="icon" href="https://www.elitesolutions.shop/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://www.elitesolutions.shop/favicon.ico" type="image/x-icon">
+    
     <style>
         /* CSS Resets and Basic Setup */
         :root {
@@ -35,6 +39,7 @@
             background-color: var(--color-dark);
             color: var(--color-text);
             line-height: 1.6;
+            padding-bottom: 150px; /* Add padding to bottom so sticky card doesn't cover footer on mobile */
         }
 
         /* Utility Classes */
@@ -107,57 +112,83 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 201, 167, 0.4);
         }
-
-        .cta-button-secondary {
-            background-color: var(--color-primary);
-            color: var(--color-light);
-            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
-        }
-        .cta-button-secondary:hover {
-            background-color: var(--color-primary-hover);
-            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
-        }
-
-        /* --- Discount Banner --- */
-        #discount-banner {
-            background-color: var(--color-secondary);
-            padding: 40px 0;
+        
+        /* --- Sticky Discount Card --- */
+        .discount-card {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ffffff;
+            border: 2px solid var(--color-primary);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 400px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            z-index: 1000; /* High z-index to stay on top */
+            transition: all 0.3s ease;
             text-align: center;
         }
-        #discount-banner h2 {
-            color: var(--color-dark); /* Dark text on light bg for pop */
-            border-bottom: none;
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+        .discount-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
-        #discount-banner p {
-            color: var(--color-dark);
-            font-size: 1.2rem;
-            margin-bottom: 25px;
+        
+        /* NEW: Title for discount card */
+        .discount-title {
+            color: var(--color-primary);
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            color: #d9534f; /* Reddish color for emphasis */
+            margin-top: 0; /* Override h3 default margin */
         }
-        .discount-code {
-            display: inline-block;
-            background: #ffffff;
+
+        .discount-code-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Space between code and icon */
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .discount-code-text {
             color: var(--color-dark);
-            border: 2px dashed var(--color-primary);
-            padding: 10px 25px;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             font-family: "Courier New", Courier, monospace;
-            border-radius: 8px;
-            margin: 10px 0;
-            user-select: all; /* Make it easy to select */
-            cursor: pointer; /* Show it's clickable */
-            transition: background-color 0.3s ease;
+            user-select: none; /* Prevent accidental selection */
         }
-        .discount-code:hover {
-            background-color: #f0f0f0;
+        
+        .copy-icon {
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            border-radius: 5px;
+            background-color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
+        .copy-icon:hover {
+            background-color: var(--color-primary-hover);
+            transform: translateY(-1px);
+        }
+        .copy-icon svg {
+            fill: #ffffff;
+            width: 18px;
+            height: 18px;
+        }
+
         .urgency-text {
             font-weight: bold;
             color: #222; /* Slightly different dark */
             font-size: 1.1rem;
-            margin-top: 15px;
+            margin-top: 10px;
+            margin-bottom: 0; /* Cleaned up margin */
         }
 
         /* --- Feature Sections (Grid Layout) --- */
@@ -257,6 +288,36 @@
             font-size: 0.9rem;
             border-top: 1px solid var(--border-color);
         }
+        
+        /* --- Responsive Styles for Sticky Card --- */
+        @media (max-width: 768px) {
+            .discount-card {
+                bottom: 0;
+                right: 0;
+                left: 0;
+                width: 100%;
+                border-radius: 12px 12px 0 0; /* Rounded corners only on top */
+                padding: 10px;
+                max-width: 100%;
+                box-shadow: 0 -5px 20px rgba(0,0,0,0.3); /* Shadow on top */
+            }
+            .discount-card:hover {
+                transform: none; /* Disable hover lift on mobile */
+            }
+            
+            .discount-title {
+                font-size: 1.1rem;
+                margin-bottom: 5px;
+            }
+            
+            .discount-code-text {
+                font-size: 1.4rem; /* Smaller text on mobile */
+            }
+            .urgency-text {
+                font-size: 0.9rem;
+                margin-top: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -273,15 +334,6 @@
             </a>
         </div>
     </header>
-
-    <section id="discount-banner">
-        <div class="container">
-            <h2>BLACK FRIDAY EARLY ACCESS!</h2>
-            <p>Get <strong>30% OFF</strong> your purchase with the code below.</p>
-            <div class="discount-code" title="Click to copy code">ELITEBLACK30</div>
-            <p class="urgency-text"><strong>Uses:</strong> 50 / 100 (Only 50 codes left!)</p>
-        </div>
-    </section>
 
     <section id="inside">
         <div class="container">
@@ -351,7 +403,6 @@
                     <p>Aspire brings up Postgres, RabbitMQ, the API, and all workers with a single command. Get to coding instantly.</p>
                 </div>
                 <div class="card">
-<div>
                     <div class="icon">🧩</div>
                     <h3>Popular Use Cases</h3>
                     <p>Perfect for Gumroad/Stripe purchases (provisioning licenses), n8n/Zapier workflows, or internal microservice event fan-out.</p>
@@ -401,6 +452,20 @@
             </a>
         </div>
     </section>
+    
+    <!-- STICKY DISCOUNT CARD -->
+    <div class="discount-card">
+        <!-- ADDED THIS TITLE -->
+        <h3 class="discount-title">Get 30% OFF!</h3>
+        
+        <div class="discount-code-wrapper" id="copy-coupon-wrapper">
+            <span class="discount-code-text">ELITEBLACK30</span>
+            <span class="copy-icon" title="Copy to clipboard">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </span>
+        </div>
+        <p class="urgency-text"><strong>Uses:</strong> 50 / 100 (Only 50 codes left!)</p>
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -418,22 +483,34 @@
                 });
             });
 
-            // Click-to-copy for discount code
-            const discountCodeElement = document.querySelector('.discount-code');
-            if (discountCodeElement) {
-                discountCodeElement.addEventListener('click', () => {
-                    const code = discountCodeElement.innerText;
+            // Click-to-copy for discount code and icon
+            const copyCouponWrapper = document.getElementById('copy-coupon-wrapper');
+            const discountCodeTextElement = document.querySelector('.discount-code-text');
+            const discountTitleElement = document.querySelector('.discount-title'); // Get title element
+
+            if (copyCouponWrapper && discountCodeTextElement && discountTitleElement) {
+                copyCouponWrapper.addEventListener('click', () => {
+                    const code = discountCodeTextElement.innerText;
                     navigator.clipboard.writeText(code).then(() => {
                         // Give visual feedback
-                        const originalText = discountCodeExample;
-                        discountCodeElement.innerText = 'Copied!';
-                        discountCodeElement.style.backgroundColor = '#00a086';
-                        discountCodeElement.style.color = '#ffffff';
+                        const originalCodeText = discountCodeTextElement.innerText;
+                        const originalTitleText = discountTitleElement.innerText;
+                        
+                        discountCodeTextElement.innerText = 'Copied!';
+                        discountTitleElement.innerText = 'Code Copied!'; // Change title text
+                        discountTitleElement.style.color = '#00a086'; // Change title color
+                        
+                        copyCouponWrapper.querySelector('.copy-icon').style.backgroundColor = '#00a086'; // Change icon color
+                        copyCouponWrapper.querySelector('.copy-icon svg').style.fill = '#ffffff'; // Ensure SVG is white
 
                         setTimeout(() => {
-                            discountCodeElement.innerText = originalText;
-                            discountCodeElement.style.backgroundColor = '#ffffff';
-                            discountCodeElement.style.color = 'var(--color-dark)';
+                            discountCodeTextElement.innerText = originalCodeText;
+                            discountTitleElement.innerText = originalTitleText; // Revert title text
+                            discountTitleElement.style.color = '#d9534f'; // Revert title color
+                            
+                            // Revert wrapper and icon styles
+                            copyCouponWrapper.querySelector('.copy-icon').style.backgroundColor = 'var(--color-primary)';
+                            copyCouponWrapper.querySelector('.copy-icon svg').style.fill = '#ffffff';
                         }, 2000); // Revert after 2 seconds
                     }).catch(err => {
                         console.error('Failed to copy text: ', err);
