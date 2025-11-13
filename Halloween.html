@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENDS SATURDAY: 45% OFF Flash Sale | Elite Solutions</title>
+    <!-- Updated Title for the 50% Off Sale -->
+    <title>ENDS NOV 15: 50% OFF Black Friday Sale | Elite Solutions</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- CSS Variables (NEW) --- */
+        /* --- CSS Variables (Tweaked for Black Friday Urgency) --- */
         :root {
             --primary-blue: #0066FF;
             --primary-blue-dark: #0052D4;
-            --primary-orange: #ff8c00;
-            --primary-orange-dark: #e67e00;
+            /* Using Red/Gold for Black Friday accents */
+            --primary-orange: #e53e3e; /* Urgent Red */
+            --primary-orange-dark: #c53030;
+            --primary-gold: #f0b90b;
             --primary-red: #d9480f;
             --text-dark: #222;
             --text-light: #555;
@@ -48,7 +51,7 @@
             margin-bottom: 20px;
         }
 
-        /* --- Page Header (NEW) --- */
+        /* --- Page Header (Sticky) --- */
         .page-header {
             background: var(--bg-white);
             border-bottom: 1px solid var(--border-color);
@@ -87,7 +90,7 @@
             background-color: var(--primary-orange-dark);
         }
 
-        /* --- Hero Section (NEW) --- */
+        /* --- Hero Section (Updated Copy) --- */
         .hero {
             text-align: center;
             padding: 70px 0 50px 0;
@@ -130,7 +133,7 @@
             color: var(--text-light);
         }
         
-        /* --- Countdown Timer (NEW) --- */
+        /* --- Countdown Timer --- */
         .countdown-timer {
             display: flex;
             justify-content: center;
@@ -162,7 +165,7 @@
             margin-top: 5px;
         }
 
-        /* --- Offer & Urgency Section --- */
+        /* --- Offer & Urgency Section (Updated) --- */
         .offer-section {
             background: var(--bg-white);
             border-radius: 12px;
@@ -201,9 +204,10 @@
         }
 
         .progress-bar {
-            width: 50%; /* UPDATED */
+            /* 27 / 50 = 54% */
+            width: 54%; 
             height: 100%;
-            background: linear-gradient(to right, #ffc107, #f76707); /* Orange gradient */
+            background: linear-gradient(to right, var(--primary-gold), var(--primary-orange)); /* Gold to Red gradient */
             text-align: center;
             line-height: 24px;
             color: #ffffff;
@@ -330,19 +334,19 @@
             text-decoration: none;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.4); /* Red shadow */
             transition: all 0.3s ease;
         }
 
         .cta-button:hover {
             background-color: var(--primary-orange-dark);
-            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
+            box-shadow: 0 6px 20px rgba(229, 62, 62, 0.6); /* Darker red shadow */
             transform: translateY(-2px);
             text-decoration: none;
             color: #ffffff;
         }
 
-        /* --- Social Proof Section (NEW) --- */
+        /* --- Social Proof Section --- */
         .social-proof {
             background: var(--bg-white);
             border-top: 1px solid var(--border-color);
@@ -364,7 +368,7 @@
         
         .testimonial-card .stars {
             font-size: 20px;
-            color: #f5c518; /* Gold stars */
+            color: var(--primary-gold); /* Gold stars */
             margin-bottom: 15px;
         }
         
@@ -444,7 +448,7 @@
             border: 1px solid #ffc9c9;
         }
 
-        /* --- Benefits & How-to-Redeem --- */
+        /* --- How-to-Redeem --- */
         .how-to-redeem {
             background: var(--bg-white);
             border-radius: 12px;
@@ -498,7 +502,7 @@
             font-weight: bold;
         }
         
-        /* --- FAQ Section --- */
+        /* --- FAQ Section (Updated) --- */
         .faq-section {
             max-width: 800px;
             margin: 0 auto;
@@ -525,7 +529,7 @@
             margin: 0;
         }
 
-        /* --- Final Call & Footer --- */
+        /* --- Final Call & Footer (Updated) --- */
         .final-call {
             background: var(--primary-blue-dark);
             color: #ffffff;
@@ -644,7 +648,7 @@
     <header class="page-header">
         <div class="container">
             <a href="https://www.elitesolutions.shop/" class="header-title">ELITE SOLUTIONS</a>
-            <a href="#offer" class="header-cta">Get 45% Off Now</a>
+            <a href="#offer" class="header-cta">Get 50% Off Now</a>
         </div>
     </header>
 
@@ -652,13 +656,15 @@
 
         <section class="hero">
             <div class="container">
-                <h1>Stop Reinventing the Wheel.<br>Ship Your .NET Project in Days.</h1>
+                <!-- Updated Headline -->
+                <h1>The 50% Off Black Friday Sale That's Disappearing Fast</h1>
                 <p class="sub-headline">
-                    Get full, production-ready source code for complex systems.
-                    <strong>FLASH SALE:</strong> Get <strong>45% OFF</strong> all projects, but it
-                    <strong>ends this Saturday</strong> or when the last <strong>50 seats</strong> are claimed!
+                    <!-- Updated Sub-headline -->
+                    Get <strong>50% OFF</strong> all projects. This offer is strictly limited to the first
+                    <strong>50 customers</strong> and <strong>ends November 15th!</strong>
                 </p>
 
+                <!-- Countdown Timer -->
                 <div class="countdown-timer" id="countdownTimer">
                     <div class="timer-block">
                         <span class="number" id="days">0</span>
@@ -678,29 +684,35 @@
                     </div>
                 </div>
 
-                <a href="#offer" class="cta-button">👉 Claim My 45% Discount</a>
+                <!-- Updated CTA -->
+                <a href="#offer" class="cta-button">👉 Claim My 50% Discount</a>
                 <p class="trust-signals">Full .NET 9 Source Code Included · MIT-Friendly License · One-Time Payment</p>
             </div>
         </section>
 
         <section id="offer" class="offer-section">
             <div class="urgency-header">
-                <strong>SALE ENDS SATURDAY: 45% OFF</strong>
-                <span class="seats-left">Only 50 Seats Left!</span>
+                <!-- Updated Offer Text -->
+                <strong>SALE ENDS NOV 15: 50% OFF</strong>
+                <!-- Updated Seats Left -->
+                <span class="seats-left">Only 23 Seats Left!</span>
             </div>
             
             <div class="progress-container">
-                <div class="progress-bar" style="width: 50%;">50 / 100 Claimed</div>
+                <!-- Updated Progress Bar (27 / 50 Claimed = 54%) -->
+                <div class="progress-bar" style="width: 54%;">27 / 50 Claimed</div>
             </div>
 
             <div class="coupon-box">
-                <div class="coupon-pretitle">Use this coupon at checkout for 45% OFF:</div>
+                <div class="coupon-pretitle">Use this coupon at checkout for 50% OFF:</div>
                 <div class="coupon-code-wrapper">
-                    <div class="coupon-code" id="couponCode">ELITEBLACK45</div>
+                    <!-- Updated Coupon Code -->
+                    <div class="coupon-code" id="couponCode">Elite50</div>
                     <button class="copy-button" id="copyButton">Copy Code</button>
                 </div>
                 <div class="coupon-details">
-                    Offer valid until all 100 seats are claimed or Saturday, whichever comes first!
+                    <!-- Updated Details -->
+                    Offer valid until all 50 seats are claimed or Nov 15, 2025 @ 12:10 AM PST!
                 </div>
             </div>
             
@@ -714,6 +726,7 @@
             <div class="container">
                 <h2>Trusted by Hundreds of Developers</h2>
                 <div class="testimonial-grid">
+                    <!-- Testimonials remain the same as they are good social proof -->
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
                         <p class="quote">"The WMS project saved us at least 3 months of development time. The code is incredibly clean, follows modern practices, and was easy to customize. A total no-brainer at this price."</p>
@@ -736,11 +749,13 @@
 
         <section class="products-section">
             <div class="container">
-                <h2>Explore the Projects (All 45% Off)</h2>
+                <!-- Updated Section Title -->
+                <h2>Explore the Projects (All 50% Off)</h2>
                 <p style="text-align: center; font-size: 18px; max-width: 700px; margin: -20px auto 40px auto; color: var(--text-light);">
                     All projects include full .NET 9 source code, Clean Architecture, and are ready to deploy.
                 </p>
 
+                <!-- Product grid remains the same, as products are placeholders -->
                 <div class="product-grid">
                     <a href="https://www.elitesolutions.shop/" class="product-link">
                         <div class="product-card">
@@ -786,27 +801,6 @@
                             <p class="best-for"><strong>Best for:</strong> SaaS & security-minded teams reducing fake signups and bounces.</p>
                         </div>
                     </a>
-                    <a href="https://www.elitesolutions.shop/" class="product-link">
-                        <div class="product-card">
-                            <h3>7) URL Shortener API</h3>
-                            <p>Minimal APIs + Base62, Redis caching, detailed click logs, swappable storage (SQLite/Postgres/SQL Server), Docker.</p>
-                            <p class="best-for"><strong>Best for:</strong> Embedding short links into apps or internal knowledge systems.</p>
-                        </div>
-                    </a>
-                    <a href="https://www.elitesolutions.shop/" class="product-link">
-                        <div class="product-card">
-                            <h3>8) Drag & Drop Page Builder</h3>
-                            <p>Build/export responsive HTML/CSS in minutes, pre-built blocks, traits panel, device previews, portable output.</p>
-                            <p class="best-for"><strong>Best for:</strong> Launch pages, link-in-bio, portfolios, quick marketing sites.</p>
-                        </div>
-                    </a>
-                    <a href="https://www.elitesolutions.shop/" class="product-link">
-                        <div class="product-card">
-                            <h3>9) Ultimate n8n Workflow Pack</h3>
-                            <p>2,000+ Automations. 50+ categories, 400+ app integrations, AI agent templates, import JSON & run, lifetime updates.</p>
-                            <p class="best-for"><strong>Best for:</strong> Automating growth and ops without hiring a full team.</p>
-                        </div>
-                    </a>
                 </div>
             </div>
         </section>
@@ -816,7 +810,8 @@
             <ol>
                 <li>Go to <a href="https://www.elitesolutions.shop/">elitesolutions.shop</a></li>
                 <li>Add any product(s) to your cart</li>
-                <li>At checkout, apply coupon code <code>ELITEBLACK45</code></li>
+                <!-- Updated Code -->
+                <li>At checkout, apply coupon code <code>Elite50</code></li>
                 <li>Complete your purchase!</li>
             </ol>
         </div>
@@ -838,9 +833,10 @@
             <div class="container">
                 <h2>Frequently Asked Questions</h2>
                 <div class="faq-item">
-                    <p class="faq-q">Is the 45% discount really limited?</p>
+                    <!-- Updated FAQ -->
+                    <p class="faq-q">Is the 50% discount really limited?</p>
                     <div class="faq-a">
-                        <p><strong>Yes.</strong> This flash sale ends on <strong>Saturday</strong> and is also strictly limited to <strong>only 100 seats total</strong>. <strong>50 have already been claimed!</strong> When all 100 seats are claimed (or Saturday arrives), the discount code <code>ELITEBLACK45</code> will be permanently disabled.</p>
+                        <p><strong>Yes.</strong> This Black Friday sale is strictly limited to <strong>only 50 seats total</strong>. <strong>27 have already been claimed!</strong> When all 50 seats are claimed (or the timer hits zero), the discount code <code>Elite50</code> will be permanently disabled.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -861,9 +857,10 @@
         <section class="final-call-section">
             <div class="container">
                 <div class="final-call">
-                    <h2>⏰ SALE ENDS SATURDAY (Only 50 Seats Left!)</h2>
-                    <p>This is it! The <strong>45% OFF</strong> discount (code <code>ELITEBLACK45</code>) disappears <strong>this Saturday</strong> or as soon as the last 50 seats are claimed. Don't miss out on saving months of work.</p>
-                    <a href="https://www.elitesolutions.shop/" class="cta-button">Claim My 45% Discount Now</a>
+                    <!-- Updated Final Call -->
+                    <h2>⏰ SALE ENDS NOV 15th (Only 23 Seats Left!)</h2>
+                    <p>This is it! The <strong>50% OFF</strong> discount (code <code>Elite50</code>) disappears <strong>Saturday, Nov 15th</strong> or as soon as the last 23 seats are claimed. Don't miss out on saving months of work.</p>
+                    <a href="https://www.elitesolutions.shop/" class="cta-button">Claim My 50% Discount Now</a>
                 </div>
             </div>
         </section>
@@ -884,7 +881,8 @@
 
         if (copyButton && couponCode) {
             copyButton.addEventListener('click', function() {
-                const codeText = couponCode.innerText;
+                // Updated to copy "Elite50"
+                const codeText = "Elite50";
                 const tempTextarea = document.createElement('textarea');
                 tempTextarea.value = codeText;
                 tempTextarea.style.position = 'absolute';
@@ -911,32 +909,12 @@
             });
         }
 
-        // --- Countdown Timer Logic (NEW) ---
+        // --- Countdown Timer Logic (Updated to exact date) ---
         (function() {
-            // Set the end date to the NEXT Saturday.
-            const today = new Date();
-            const dayOfWeek = today.getDay(); // 0=Sunday, 1=Monday, ..., 6=Saturday
-            const daysUntilSaturday = (6 - dayOfWeek + 7) % 7;
+            // Set the end date from your discount: 11/15/2025 12:10 AM PST
+            // PST is UTC-8. Note: 12:10 AM is 00:10 in 24-hour time.
+            const saleEndTime = new Date("2025-11-15T00:10:00-08:00").getTime();
             
-            // If today is Saturday, set it for *next* Saturday (or end of today if you prefer)
-            // This logic sets it to the *end* of the upcoming Saturday.
-            let saleEndDate = new Date();
-            if (daysUntilSaturday === 0 && today.getHours() < 24) {
-                 // If it's Saturday, the sale ends today.
-                 saleEndDate.setDate(today.getDate());
-            } else if (daysUntilSaturday === 0) {
-                // If it's *past* Saturday, set to next week
-                 saleEndDate.setDate(today.getDate() + 7);
-            } else {
-                // Set to the upcoming Saturday
-                saleEndDate.setDate(today.getDate() + daysUntilSaturday);
-            }
-            
-            // Set time to 23:59:59 (end of Saturday)
-            saleEndDate.setHours(23, 59, 59, 999);
-            
-            const saleEndTime = saleEndDate.getTime();
-
             const timer = setInterval(function() {
                 const now = new Date().getTime();
                 const distance = saleEndTime - now;
@@ -952,10 +930,12 @@
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                document.getElementById("days").innerText = days < 10 ? '0' + days : days;
-                document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
-                document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
-                document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+                const format = (num) => String(num).padStart(2, '0');
+
+                document.getElementById("days").innerText = format(days);
+                document.getElementById("hours").innerText = format(hours);
+                document.getElementById("minutes").innerText = format(minutes);
+                document.getElementById("seconds").innerText = format(seconds);
                 
             }, 1000);
         })();
