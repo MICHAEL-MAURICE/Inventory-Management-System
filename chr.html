@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>مصمم كارت الكريسماس</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f9fafb;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+      transition: background 0.4s ease;
+    }
+
+    /* وضع الصبح */
+    body.day-mode {
+      background: linear-gradient(to bottom, #e0f2fe, #bae6fd, #f9fafb);
+    }
+
+    /* وضع الليل */
+    body.night-mode {
+      background: linear-gradient(to bottom, #0b1220, #1e293b);
+    }
+
+    .container {
+      max-width: 1100px;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      color: #f97316;
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #e5e7eb;
+      margin-bottom: 16px;
+    }
+
+    .controls {
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .controls h2 {
+      font-size: 18px;
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #a5b4fc;
+    }
+
+    .section-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin: 14px 0 6px;
+      border-top: 1px solid rgba(55, 65, 81, 0.7);
+      padding-top: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    label {
+      font-size: 14px;
+      color: #e5e7eb;
+    }
+
+    input[type="file"],
+    input[type="text"] {
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      padding: 6px 8px;
+      background: #0b1120;
+      color: #f9fafb;
+      font-size: 14px;
+    }
+
+    input[type="text"]::placeholder {
+      color: #6b7280;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .toggle-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(to right, #f97316, #facc15);
+      color: #111827;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .note {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 6px;
+      line-height: 1.3;
+    }
+
+    .canvas-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #020617;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      background: #020617;
+    }
+
+    .hint {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- اليسار: الكنترولز -->
+    <div>
+      <h1>🎄 مصمم كارت الكريسماس 🎅</h1>
+      <div class="subtitle">
+        حمّل صورتك، والبسها طاقية بابا نويل، واعمل كارت كريسماس شكله جميل!
+      </div>
+
+      <div class="controls">
+        <h2>الخطوة ١: حمّل صورتك</h2>
+        <div class="form-group">
+          <label for="photoInput">اختار صورة من عندك (JPG / PNG)</label>
+          <input type="file" id="photoInput" accept="image/*" />
+          <div class="note">
+            نصيحة: اختار صورة وشّك فيها في النص تقريبًا عشان الطاقية تبان حلوة.
+          </div>
+        </div>
+
+        <div class="section-title">اختيارات المنظر</div>
+
+        <div class="toggle-row">
+          <input type="checkbox" id="nightToggle" />
+          <label for="nightToggle">وضع بالليل (سما فيها نجوم)</label>
+        </div>
+
+        <div class="toggle-row">
+          <input type="checkbox" id="snowToggle" checked />
+          <label for="snowToggle">ثلج بيقع</label>
+        </div>
+
+        <div class="toggle-row">
+          <input type="checkbox" id="treeToggle" checked />
+          <label for="treeToggle">شجرة كريسماس جنب الصورة</label>
+        </div>
+
+        <div class="toggle-row">
+          <input type="checkbox" id="swayToggle" checked />
+          <label for="swayToggle">خلي الشجرة تميل كأن في هوا</label>
+        </div>
+
+        <div class="toggle-row">
+          <input type="checkbox" id="santaToggle" checked />
+          <label for="santaToggle">بابا نويل بيشاور بإيده</label>
+        </div>
+
+        <div class="section-title">الجملة على الكارت</div>
+
+        <div class="form-group">
+          <label for="nameInput">اكتب اسمك</label>
+          <input type="text" id="nameInput" placeholder="اكتب اسمك هنا..." />
+          <div class="note">
+            الكارت هيكتب: <strong>كريسماس سعيد يا <span id="previewName">صاحبي</span>!</strong>
+          </div>
+        </div>
+
+        <button class="btn" id="downloadBtn">
+          ⬇️ نزل الكارت كصورة
+        </button>
+        <div class="note">
+          هينزّل لك صورة PNG فيها كل اللي ظاهر في الكارت.
+        </div>
+      </div>
+    </div>
+
+    <!-- اليمين: الـ Canvas -->
+    <div class="canvas-wrapper">
+      <canvas id="cardCanvas" width="900" height="600"></canvas>
+      <div class="hint">
+        كل اللي انت شايفه هنا هيتحفظ في الصورة لما تعمل Download.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // إعداد الـ canvas
+    const canvas = document.getElementById("cardCanvas");
+    const ctx = canvas.getContext("2d");
+    const width = canvas.width;
+    const height = canvas.height;
+
+    // الوضع الافتراضي: الصبح
+    document.body.classList.add("day-mode");
+
+    // منطقة الصورة
+    const photoArea = {
+      x: 330,
+      y: 160,
+      w: 240,
+      h: 260
+    };
+
+    // الحالة العامة
+    const state = {
+      isNight: false,
+      showSnow: true,
+      showTree: true,
+      swayTree: true,
+      showSanta: true,
+      name: "",
+      photoImage: null,
+      snowflakes: [],
+      time: 0
+    };
+
+    // إعداد الثلج
+    const SNOW_COUNT = 120;
+
+    function initSnow() {
+      state.snowflakes = [];
+      for (let i = 0; i < SNOW_COUNT; i++) {
+        state.snowflakes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: 1 + Math.random() * 2,
+          speed: 0.5 + Math.random() * 1.5
+        });
+      }
+    }
+
+    function drawBackground() {
+      if (state.isNight) {
+        const gradient = ctx.createLinearGradient(0, 0, 0, height);
+        gradient.addColorStop(0, "#020617");
+        gradient.addColorStop(1, "#111827");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+
+        // نجوم
+        ctx.fillStyle = "rgba(248, 250, 252, 0.9)";
+        for (let i = 0; i < 80; i++) {
+          const x = Math.random() * width;
+          const y = Math.random() * (height * 0.4);
+          const r = Math.random() * 1.2;
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      } else {
+        const gradient = ctx.createLinearGradient(0, 0, 0, height);
+        gradient.addColorStop(0, "#e0f2fe");
+        gradient.addColorStop(0.6, "#bae6fd");
+        gradient.addColorStop(1, "#f9fafb");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+
+        // شمس
+        ctx.beginPath();
+        ctx.arc(90, 90, 35, 0, Math.PI * 2);
+        ctx.fillStyle = "#facc15";
+        ctx.fill();
+      }
+
+      // الأرض التلج
+      ctx.fillStyle = "#e5f0ff";
+      ctx.beginPath();
+      ctx.moveTo(0, height * 0.7);
+      ctx.quadraticCurveTo(width * 0.25, height * 0.62, width * 0.5, height * 0.7);
+      ctx.quadraticCurveTo(width * 0.75, height * 0.78, width, height * 0.7);
+      ctx.lineTo(width, height);
+      ctx.lineTo(0, height);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function updateAndDrawSnow(update = true) {
+      if (!state.showSnow) return;
+
+      ctx.fillStyle = "rgba(248, 250, 252, 0.9)";
+      for (const flake of state.snowflakes) {
+        if (update) {
+          flake.y += flake.speed;
+          flake.x += Math.sin((state.time / 500) + flake.y / 60) * 0.2;
+          if (flake.y > height) {
+            flake.y = -5;
+            flake.x = Math.random() * width;
+          }
+        }
+
+        // ممنوع الثلج جوه منطقة الصورة
+        const insidePhoto =
+          flake.x > photoArea.x - 5 &&
+          flake.x < photoArea.x + photoArea.w + 5 &&
+          flake.y > photoArea.y - 5 &&
+          flake.y < photoArea.y + photoArea.h + 5;
+
+        if (insidePhoto) continue;
+
+        ctx.beginPath();
+        ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // رسم الشجرة
+    function drawTree(time) {
+      if (!state.showTree) return;
+
+      const baseX = 220;
+      const baseY = 420;
+
+      ctx.save();
+      ctx.translate(baseX, baseY);
+
+      if (state.swayTree) {
+        const angle = Math.sin(time / 900) * 0.08;
+        ctx.rotate(angle);
+      }
+
+      // جذع الشجرة
+      ctx.fillStyle = "#7c2d12";
+      ctx.fillRect(-12, 0, 24, 55);
+
+      // الفروع (مثلثات)
+      ctx.fillStyle = "#065f46";
+
+      function triangle(yOffset, widthHalf, h) {
+        ctx.beginPath();
+        ctx.moveTo(0, -yOffset - h);
+        ctx.lineTo(-widthHalf, -yOffset);
+        ctx.lineTo(widthHalf, -yOffset);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      triangle(15, 70, 80);
+      triangle(55, 55, 70);
+      triangle(90, 40, 60);
+
+      // الكور الملوّنة
+      const ornamentColors = ["#facc15", "#ef4444", "#0ea5e9", "#f97316"];
+      for (let i = 0; i < 10; i++) {
+        const angle = (Math.PI * 2 * i) / 10;
+        const radius = 40 + (i % 3) * 8;
+        const ox = Math.cos(angle) * radius * 0.6;
+        const oy = -60 + Math.sin(angle) * 10;
+        ctx.beginPath();
+        ctx.arc(ox, oy, 4, 0, Math.PI * 2);
+        ctx.fillStyle = ornamentColors[i % ornamentColors.length];
+        ctx.fill();
+      }
+
+      // النجمة
+      ctx.save();
+      ctx.translate(0, -155);
+      ctx.rotate(time / 2000);
+      ctx.fillStyle = "#facc15";
+      starPath(ctx, 0, 0, 5, 14, 6);
+      ctx.fill();
+      ctx.restore();
+
+      ctx.restore();
+    }
+
+    function starPath(ctx, x, y, points, outerRadius, innerRadius) {
+      const step = Math.PI / points;
+      ctx.beginPath();
+      for (let i = 0; i < 2 * points; i++) {
+        const radius = i % 2 === 0 ? outerRadius : innerRadius;
+        const angle = i * step - Math.PI / 2;
+        ctx.lineTo(x + radius * Math.cos(angle), y + radius * Math.sin(angle));
+      }
+      ctx.closePath();
+    }
+
+    // رسم بابا نويل
+    function drawSanta(time) {
+      if (!state.showSanta) return;
+
+      const baseX = 700;
+      const baseY = 390;
+      ctx.save();
+      ctx.translate(baseX, baseY);
+
+      // الجسم
+      ctx.fillStyle = "#b91c1c";
+      ctx.beginPath();
+      ctx.ellipse(0, 40, 40, 55, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // الحزام
+      ctx.fillStyle = "#111827";
+      ctx.fillRect(-40, 30, 80, 10);
+      ctx.fillStyle = "#facc15";
+      ctx.fillRect(-10, 30, 20, 10);
+
+      // الرأس
+      ctx.beginPath();
+      ctx.arc(0, -10, 22, 0, Math.PI * 2);
+      ctx.fillStyle = "#fed7aa";
+      ctx.fill();
+
+      // الدقن (اللحية)
+      ctx.fillStyle = "#f9fafb";
+      ctx.beginPath();
+      ctx.moveTo(-18, 0);
+      ctx.quadraticCurveTo(0, 25, 18, 0);
+      ctx.quadraticCurveTo(0, 12, -18, 0);
+      ctx.fill();
+
+      // العيون
+      ctx.fillStyle = "#111827";
+      ctx.beginPath();
+      ctx.arc(-7, -15, 2.2, 0, Math.PI * 2);
+      ctx.arc(7, -15, 2.2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // الأنف
+      ctx.beginPath();
+      ctx.arc(0, -9, 2.3, 0, Math.PI * 2);
+      ctx.fillStyle = "#f97316";
+      ctx.fill();
+
+      // ابتسامة
+      ctx.beginPath();
+      ctx.arc(0, -5, 8, 0.1 * Math.PI, 0.9 * Math.PI);
+      ctx.strokeStyle = "#111827";
+      ctx.lineWidth = 1.4;
+      ctx.stroke();
+
+      // الطاقية
+      ctx.save();
+      ctx.translate(0, -25);
+      ctx.fillStyle = "#b91c1c";
+      ctx.beginPath();
+      ctx.moveTo(-22, 0);
+      ctx.lineTo(22, 0);
+      ctx.lineTo(3, -26);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = "#f9fafb";
+      ctx.fillRect(-22, 0, 44, 6);
+      ctx.beginPath();
+      ctx.arc(3, -26, 5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // الأذرع
+      ctx.lineWidth = 6;
+      ctx.lineCap = "round";
+
+      // الدراع الشمال ثابت
+      ctx.strokeStyle = "#b91c1c";
+      ctx.beginPath();
+      ctx.moveTo(-25, 15);
+      ctx.lineTo(-55, -5);
+      ctx.stroke();
+
+      // الدراع اليمين بيشاور
+      const waveAngle = Math.sin(time / 250) * 0.6 - 0.4;
+      ctx.save();
+      ctx.translate(25, 15);
+      ctx.rotate(waveAngle);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(30, -10);
+      ctx.stroke();
+      ctx.restore();
+
+      // الأيادي
+      ctx.fillStyle = "#f9fafb";
+      ctx.beginPath();
+      ctx.arc(-55, -5, 6, 0, Math.PI * 2);
+      ctx.arc(25 + Math.cos(waveAngle) * 30, 15 + Math.sin(waveAngle) * -10, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    // الصورة + طاقية بابا نويل
+    function drawPhotoAndHat() {
+      // الإطار
+      ctx.save();
+      ctx.strokeStyle = "rgba(15, 23, 42, 0.8)";
+      ctx.lineWidth = 4;
+      ctx.fillStyle = "rgba(15, 23, 42, 0.35)";
+      roundRect(ctx, photoArea.x - 8, photoArea.y - 8, photoArea.w + 16, photoArea.h + 16, 14, true, true);
+
+      if (state.photoImage) {
+        const img = state.photoImage;
+        const ratio = Math.min(photoArea.w / img.width, photoArea.h / img.height);
+        const drawW = img.width * ratio;
+        const drawH = img.height * ratio;
+        const dx = photoArea.x + (photoArea.w - drawW) / 2;
+        const dy = photoArea.y + (photoArea.h - drawH) / 2;
+
+        ctx.drawImage(img, dx, dy, drawW, drawH);
+
+        // طاقية بابا نويل في نص الصورة تقريبًا
+        const cx = photoArea.x + photoArea.w / 2;
+        const hatBottomY = photoArea.y + 35;
+
+        // المثلث الأحمر
+        ctx.beginPath();
+        ctx.moveTo(cx - 70, hatBottomY);
+        ctx.lineTo(cx + 70, hatBottomY);
+        ctx.lineTo(cx, hatBottomY - 120);
+        ctx.closePath();
+        ctx.fillStyle = "#b91c1c";
+        ctx.fill();
+
+        // الجزء الأبيض تحت
+        ctx.fillStyle = "#f9fafb";
+        roundRect(ctx, cx - 80, hatBottomY - 12, 160, 24, 12, true, false);
+
+        // الكرة البيضاء فوق
+        ctx.beginPath();
+        ctx.arc(cx, hatBottomY - 120, 10, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        // لما لسه مفيش صورة
+        ctx.fillStyle = "#9ca3af";
+        ctx.font = "16px system-ui, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("حمّل صورتك من الناحية التانية", photoArea.x + photoArea.w / 2, photoArea.y + photoArea.h / 2 - 10);
+        ctx.fillText("وهنا هتظهر بالطاقية 👒🎅", photoArea.x + photoArea.w / 2, photoArea.y + photoArea.h / 2 + 16);
+      }
+
+      ctx.restore();
+    }
+
+    function roundRect(ctx, x, y, w, h, r, fill, stroke) {
+      if (w < 2 * r) r = w / 2;
+      if (h < 2 * r) r = h / 2;
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+      if (fill) ctx.fill();
+      if (stroke) ctx.stroke();
+    }
+
+    // كتابة الجملة (مرفوعة أكتر لفوق)
+    function drawGreeting() {
+      const nameToShow = state.name || "صاحبي";
+
+      ctx.save();
+      ctx.textAlign = "center";
+
+      // السطر الرئيسي – أعلى شوية (y = 45)
+      ctx.font = "42px system-ui, sans-serif";
+      ctx.fillStyle = "#ffffff";
+      ctx.shadowColor = "rgba(0, 0, 0, 0.8)";
+      ctx.shadowBlur = 12;
+      ctx.fillText(`كريسماس سعيد يا ${nameToShow}!`, width / 2, 45);
+
+      // السطر التاني – برضه أعلى (y = 85)
+      ctx.font = "24px system-ui, sans-serif";
+      ctx.fillStyle = "#fffbeb";
+      ctx.shadowColor = "rgba(0, 0, 0, 0.8)";
+      ctx.shadowBlur = 10;
+      ctx.fillText(`يا رب تبقي سنة سعيدة عليكو`, width / 2, 85);
+
+      ctx.restore();
+    }
+
+    // دالة الرسم الرئيسية
+    function drawScene(updateSnow = true) {
+      drawBackground();
+      drawTree(state.time);
+      drawPhotoAndHat();
+      drawSanta(state.time);
+      drawGreeting();
+      updateAndDrawSnow(updateSnow);
+    }
+
+    // الأنيميشن
+    function animate(timestamp) {
+      state.time = timestamp;
+      ctx.clearRect(0, 0, width, height);
+      drawScene(true);
+      requestAnimationFrame(animate);
+    }
+
+    // ربط الكنترولز
+    const photoInput = document.getElementById("photoInput");
+    const nightToggle = document.getElementById("nightToggle");
+    const snowToggle = document.getElementById("snowToggle");
+    const treeToggle = document.getElementById("treeToggle");
+    const swayToggle = document.getElementById("swayToggle");
+    const santaToggle = document.getElementById("santaToggle");
+    const nameInput = document.getElementById("nameInput");
+    const previewName = document.getElementById("previewName");
+    const downloadBtn = document.getElementById("downloadBtn");
+
+    photoInput.addEventListener("change", (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+          state.photoImage = img;
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    nightToggle.addEventListener("change", (e) => {
+      state.isNight = e.target.checked;
+      if (state.isNight) {
+        document.body.classList.remove("day-mode");
+        document.body.classList.add("night-mode");
+      } else {
+        document.body.classList.remove("night-mode");
+        document.body.classList.add("day-mode");
+      }
+    });
+
+    snowToggle.addEventListener("change", (e) => {
+      state.showSnow = e.target.checked;
+    });
+
+    treeToggle.addEventListener("change", (e) => {
+      state.showTree = e.target.checked;
+    });
+
+    swayToggle.addEventListener("change", (e) => {
+      state.swayTree = e.target.checked;
+    });
+
+    santaToggle.addEventListener("change", (e) => {
+      state.showSanta = e.target.checked;
+    });
+
+    nameInput.addEventListener("input", (e) => {
+      state.name = e.target.value.trim();
+      previewName.textContent = state.name || "صاحبي";
+    });
+
+    // تحميل الكارت كصورة
+    downloadBtn.addEventListener("click", () => {
+      const dataURL = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      const safeName = (state.name || "ChristmasCard").replace(/[^a-z0-9\u0600-\u06FF]/gi, "_");
+      link.download = safeName + ".png";
+      link.href = dataURL;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+
+    // تشغيل
+    initSnow();
+    requestAnimationFrame(animate);
+  </script>
+</body>
+</html>
