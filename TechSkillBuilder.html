@@ -38,6 +38,17 @@
         .text-center { text-align: center; }
         .text-accent { color: var(--accent); font-weight: bold; }
         .highlight { background-color: #fef9c3; padding: 2px 5px; border-radius: 4px; }
+        .badge {
+            display: inline-block;
+            background: #ede9fe;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
         
         /* Sticky Urgency Bar */
         .urgency-bar {
@@ -57,18 +68,6 @@
         header {
             padding: 60px 0 40px;
             text-align: center;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: #ede9fe;
-            color: var(--primary);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-transform: uppercase;
         }
 
         h1 {
@@ -159,77 +158,90 @@
             letter-spacing: 1px;
         }
 
-        /* Features Section */
-        .features {
+        /* Who Is This For Section */
+        .who-for {
+            background: #eef2ff;
+            padding: 60px 0;
+            border-radius: 12px;
+            margin-bottom: 60px;
+        }
+
+        /* Curriculum / Modules Section */
+        .curriculum {
             background: white;
             padding: 80px 0;
             border-top: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .module-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            background: #fff;
+            transition: transform 0.2s;
+        }
+
+        .module-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .module-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .module-desc {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        .module-bullets {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .module-bullets li {
+            position: relative;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+
+        .module-bullets li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        /* Features/Benefits Grid */
+        .features {
+            background: var(--light);
+            padding: 60px 0;
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
 
         .feature-item {
-            padding: 10px;
-        }
-
-        .feature-item h3 { 
-            margin-bottom: 12px; 
-            color: var(--dark); 
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .check-icon {
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-
-        .module-list {
-            list-style: none;
-            margin-top: 15px;
-            border-left: 3px solid #e2e8f0;
-            padding-left: 15px;
-        }
-        
-        .module-list li {
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-            color: #475569;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-            background-color: var(--light);
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .review-card {
             background: white;
-            padding: 30px;
-            border-radius: 12px;
-            border-top: 4px solid var(--primary);
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-
-        .stars { color: #f59e0b; margin-bottom: 15px; }
-        .quote { font-style: italic; color: #334155; margin-bottom: 20px; display: block; }
-        .author { font-weight: bold; font-size: 0.9rem; color: var(--dark); }
-        .author-role { font-size: 0.8rem; color: #64748b; }
 
         /* Pricing Card */
         .price-section {
@@ -243,7 +255,7 @@
             background: linear-gradient(145deg, #1e293b, #0f172a);
             padding: 50px 30px;
             border-radius: 16px;
-            max-width: 500px;
+            max-width: 550px;
             margin: 0 auto;
             border: 1px solid rgba(255,255,255,0.1);
             position: relative;
@@ -262,31 +274,8 @@
             font-weight: bold;
         }
 
-        .price-header { margin-bottom: 30px; }
-        .old-price { text-decoration: line-through; color: #94a3b8; font-size: 1.4rem; margin-bottom: 5px; display: block;}
         .new-price { font-size: 4.5rem; font-weight: 800; color: #4ade80; line-height: 1; letter-spacing: -2px; }
         .period { font-size: 1.2rem; color: #94a3b8; font-weight: normal; }
-
-        .price-features {
-            text-align: left;
-            margin: 30px auto;
-            max-width: 300px;
-        }
-        
-        .price-features li {
-            margin-bottom: 12px;
-            list-style: none;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .price-features li::before {
-            content: "✓";
-            color: #4ade80;
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
 
         /* Footer */
         footer {
@@ -309,15 +298,15 @@
 <body>
 
     <div class="urgency-bar">
-        ⚡ FLASH SALE: Join the "Tech Skill Builder" Membership for just $10/mo - Offer Ends Soon!
+        🔥 FLASH SALE: Join "Tech Skill Builder" for just $10/mo - Price Locked Forever!
     </div>
 
     <header class="container">
-        <span class="hero-badge">For .NET Developers Who Want More</span>
-        <h1>Stop Watching Tutorials.<br>Start Building <span style="color: var(--primary);">Enterprise Systems</span>.</h1>
+        <span class="badge">Level Up Your .NET Skills</span>
+        <h1>Master .NET Development<br>Without the <span style="color: var(--primary);">Fluff</span>.</h1>
         <p class="sub-headline">
-            Get weekly hands-on coding projects, full source code, and master advanced topics like 
-            <strong>Webhooks, RabbitMQ, DDD, and Clean Architecture</strong>.
+            Weekly hands-on coding tutorials, full source code, and production-ready projects covering 
+            <strong>Clean Architecture, Webhooks, RabbitMQ, and more</strong>.
         </p>
         
         <div class="product-image-container">
@@ -325,13 +314,13 @@
         </div>
 
         <a href="https://gumroad.com/checkout?layout=profile&product=cstpzm&option=hTDWg0NvCvB3rnWmuvNBfg%3D%3D&recurrence=monthly&quantity=1" class="btn">Start Your $10 Membership Now</a>
-        <span class="btn-subtext">🚀 Instant Access to All Current & Future Projects</span>
+        <span class="btn-subtext">🚀 Instant Digital Access to Library</span>
     </header>
 
     <section class="container">
         <div class="timer-box text-center">
-            <h3 class="text-accent">⚠️ PRICE LOCK ENDING SOON</h3>
-            <p style="margin-top: 10px;">We are capping the $10/mo founder's rate. Lock in your price before it increases.</p>
+            <h3 class="text-accent">⚠️ OFFER ENDING SOON</h3>
+            <p style="margin-top: 10px;">Lock in the $10/mo founder's rate before the price increases.</p>
             <div class="timer-display" id="countdown">
                 <div><span id="days">01</span><div class="timer-label">Days</div></div>:
                 <div><span id="hours">23</span><div class="timer-label">Hours</div></div>:
@@ -341,87 +330,120 @@
         </div>
     </section>
 
-    <section class="features">
-        <div class="container">
-            <div class="text-center" style="max-width: 800px; margin: 0 auto 50px;">
-                <h2>Why This Membership Is Different</h2>
-                <p style="margin-top: 15px; font-size: 1.1rem; color: #475569;">
-                    Most courses give you theory. We give you <strong>production-ready code</strong>. 
-                    Every week, you get a new deep-dive into complex .NET scenarios.
+    <section class="container">
+        <div class="who-for text-center">
+            <div style="max-width: 700px; margin: 0 auto;">
+                <h2 style="margin-bottom: 20px; color: var(--dark);">👨‍💻 Who Is This For?</h2>
+                <p style="font-size: 1.1rem; color: #334155; margin-bottom: 20px;">
+                    Perfect for <strong>.NET developers, software engineers, and coding enthusiasts</strong> who want to learn by doing.
+                </p>
+                <p style="color: #475569;">
+                    Whether you’re preparing for a job, improving side projects, or aiming for senior-level skills, this membership gives you practical knowledge—not theory.
                 </p>
             </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 10px;">🔥 Why Join Tech Skill Builder?</h2>
+            <p class="text-center" style="color: #64748b;">Stop wasting time on research. Get ready-to-use examples.</p>
 
             <div class="feature-grid">
                 <div class="feature-item">
-                    <h3>
-                        <span class="check-icon">⚡</span>
-                        Fresh Weekly Content
-                    </h3>
-                    <p>New code tutorials every week. Stay ahead of the curve with the latest .NET 9 features and best practices.</p>
+                    <h3>💡 What You’ll Get</h3>
+                    <ul class="module-bullets" style="margin-top: 15px;">
+                        <li>Fresh .NET code tutorials every week (sometimes twice!)</li>
+                        <li>Practical examples you can plug into your own projects</li>
+                        <li>A growing library of .NET coding resources</li>
+                        <li>Full Source Code & Video Walkthroughs</li>
+                    </ul>
                 </div>
-
                 <div class="feature-item">
-                    <h3>
-                        <span class="check-icon">🏗️</span>
-                        Real-World Architecture
-                    </h3>
-                    <p>Stop building "Hello World" apps. Learn how to structure massive applications using:</p>
-                    <ul class="module-list">
+                    <h3>🚀 Specific Skills Covered</h3>
+                    <ul class="module-bullets" style="margin-top: 15px;">
+                        <li>Reverse Proxy Development in .NET</li>
                         <li>Clean Architecture with CQRS & MediatR</li>
-                        <li>Domain-Driven Design (DDD) & Aggregates</li>
-                        <li>Microservices patterns & Event Buses</li>
+                        <li>Unit & Integration Testing Strategies</li>
+                        <li>Advanced Logging & Monitoring</li>
+                        <li>Real-world performance optimization</li>
                     </ul>
                 </div>
-
                 <div class="feature-item">
-                    <h3>
-                        <span class="check-icon">📦</span>
-                        Complete Projects Included
-                    </h3>
-                    <p>Don't start from scratch. Download full source code for:</p>
-                    <ul class="module-list">
-                        <li><strong>Webhooks System:</strong> 4-Part series with RabbitMQ</li>
-                        <li><strong>AI Chat App:</strong> Microsoft.Extensions.AI implementation</li>
-                        <li><strong>Validation:</strong> FluentValidation Enterprise patterns</li>
+                    <h3>🏆 The Result</h3>
+                    <ul class="module-bullets" style="margin-top: 15px;">
+                        <li>Stay up-to-date with .NET 8+ and .NET 9</li>
+                        <li>Build clean, scalable, production-ready apps</li>
+                        <li>Grow your coding confidence with real projects</li>
+                        <li>Save hours of development time</li>
                     </ul>
-                </div>
-                
-                <div class="feature-item">
-                    <h3>
-                        <span class="check-icon">🎓</span>
-                        Advanced Skill Building
-                    </h3>
-                    <p>Master the hard stuff that seniors get paid for: Unit Testing, Architecture Tests, Logging, and Performance Optimization.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonials">
+    <section class="curriculum">
         <div class="container">
-            <h2 class="text-center" style="margin-bottom: 10px;">Trusted by .NET Professionals</h2>
-            <p class="text-center" style="margin-bottom: 40px; color: #64748b;">Join hundreds of developers leveling up their careers.</p>
-            
-            <div class="testimonial-grid">
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <span class="quote">"The Webhooks series alone was worth the subscription. I implemented the RabbitMQ pattern at work and my team was blown away."</span>
-                    <span class="author">James D.</span>
-                    <span class="author-role">Senior Backend Engineer</span>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <span class="quote">"Finally, tutorials that don't just scratch the surface. The Clean Architecture templates saved me weeks of setup time."</span>
-                    <span class="author">Maria S.</span>
-                    <span class="author-role">Freelance .NET Developer</span>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <span class="quote">"I was struggling with DDD concepts until I saw the 'What Is An Entity' module. It finally clicked. Highly recommended."</span>
-                    <span class="author">Ahmed K.</span>
-                    <span class="author-role">Software Architect</span>
-                </div>
+            <div class="text-center" style="margin-bottom: 50px;">
+                <h2 style="color: var(--dark); font-size: 2.2rem;">📘 Current Tutorials Available</h2>
+                <p style="font-size: 1.1rem; color: #475569; margin-top: 10px;">Get instant access to all these modules immediately upon joining.</p>
             </div>
+
+            <div class="module-card">
+                <div class="module-title">1) 🏗️ Clean Architecture With .NET 9 and CQRS</div>
+                <p class="module-desc">A step-by-step guide to building a Clean Architecture solution. Learn how to structure Domain, Application, Infrastructure, and WebAPI layers while implementing CQRS with MediatR.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-title">2) 📦 MediatR and FluentValidation Demo Project (.NET 9)</div>
+                <p class="module-desc">Enterprise-grade validation patterns for ASP.NET Core Web API. Covers pipeline behaviors, centralized FluentValidation, exception handling, and Swagger/OpenAPI integration.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-title">3) 🧪 Architecture Tests for Clean Architecture</div>
+                <p class="module-desc">Prevent architecture drift and enforce dependency rules (e.g., Domain ≠ Infrastructure) using NetArchTest.Rules / ArchUnitNET to maintain living documentation.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-title">4) 🛠️ The Better Way to Configure Entity Framework Core</div>
+                <p class="module-desc">Cleaner, testable EF Core configuration via the Options Pattern. Learn to bind DatabaseOptions, centralize setup, and keep Program.cs minimal.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-title">5) 🤖 The New Standard for AI in .NET: Microsoft.Extensions.AI</div>
+                <p class="module-desc">Build a hands-on console app with <code>IChatClient</code> abstraction, secure user secrets, and streaming responses for real-time UX.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-title">6) 🎯 What Is an Entity? | Domain-Driven Design</div>
+                <p class="module-desc">A fast, practical primer on modeling Entities the DDD way. Covers identity-first equality, behavior over data, and encapsulation.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-title">7) 🧩 Domain Validation With .NET</div>
+                <p class="module-desc">Learn where domain validation truly belongs. Implement invariants in Entities/Aggregates, use Guard clauses, and handle cross-aggregate checks.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-title">8) 🔔 Webhooks in .NET — Part 1: Building From Scratch</div>
+                <p class="module-desc"><strong>Format: PDF + Video + Source Code.</strong> Build a minimal ASP.NET Core webhook system with subscription models, dispatchers, and testing tips.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-title">9) 🧱 Webhooks in .NET — Part 2: Model Architecture & Scaling</div>
+                <p class="module-desc"><strong>Format: PDF + Video + Source Code.</strong> Scale with EF Core, retries, structured payloads, and background workers for at-least-once delivery.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-title">10) 🚚 Webhooks in .NET — Part 3: Event Bus & Background Workers</div>
+                <p class="module-desc"><strong>Format: PDF + Video + Source Code.</strong> Decouple delivery using an in-memory Event Bus. Learn Publish/Subscribe flows, .NET Channels, and parallel processing.</p>
+            </div>
+
+            <div class="module-card">
+                <div class="module-title">11) 📡 Webhooks in .NET — Part 4: Scaling with RabbitMQ</div>
+                <p class="module-desc"><strong>Format: PDF + Video + Source Code.</strong> The ultimate scaling guide. Integrate RabbitMQ as a durable message broker for distributed, horizontal scaling and burst traffic handling.</p>
+            </div>
+
         </div>
     </section>
 
@@ -429,20 +451,16 @@
         <div class="container">
             <div class="price-card">
                 <div class="popular-tag">BEST VALUE</div>
-                <div class="price-header">
-                    <h3>Tech Skill Builder Membership</h3>
-                    <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 5px;">Cancel Anytime. No Commitment.</p>
-                </div>
+                <h3 style="margin-bottom: 10px;">Tech Skill Builder Membership</h3>
+                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Cancel Anytime. No Commitment.</p>
                 
-                <span class="old-price">$49/mo Value</span>
                 <span class="new-price">$10<span class="period">/mo</span></span>
                 
-                <ul class="price-features">
-                    <li>Instant Access to All Past Projects</li>
-                    <li>New .NET Code Every Week</li>
-                    <li>Full Source Code Downloads</li>
-                    <li>Webhooks & AI Masterclasses</li>
-                    <li>Private Member Resources</li>
+                <ul style="text-align: left; margin: 30px auto; max-width: 350px; list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;">✅ Unlock premium coding tutorials</li>
+                    <li style="margin-bottom: 10px;">✅ Full Source Code Downloads</li>
+                    <li style="margin-bottom: 10px;">✅ Video Walkthroughs & PDFs</li>
+                    <li style="margin-bottom: 10px;">✅ Boost your skills & career</li>
                 </ul>
 
                 <a href="https://gumroad.com/checkout?layout=profile&product=cstpzm&option=hTDWg0NvCvB3rnWmuvNBfg%3D%3D&recurrence=monthly&quantity=1" class="btn" style="width: 100%; display: block; background: #4ade80; color: #0f172a; box-shadow: none;">Join Now for $10</a>
@@ -462,13 +480,11 @@
     </footer>
 
     <script>
-        // Standard 48-Hour Evergreen Timer Logic
         function getDeadline() {
             const storedDeadline = localStorage.getItem('eliteTechSkillDeadline');
             if (storedDeadline) {
                 const deadlineDate = new Date(parseInt(storedDeadline));
                 if (new Date() > deadlineDate) {
-                    // Reset if expired for demo purposes
                     return setNewDeadline();
                 }
                 return deadlineDate;
