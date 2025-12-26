@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -322,7 +328,7 @@
             <h3 class="text-accent">⚠️ OFFER ENDING SOON</h3>
             <p style="margin-top: 10px;">Lock in the $10/mo founder's rate before the price increases.</p>
             <div class="timer-display" id="countdown">
-                <div><span id="days">01</span><div class="timer-label">Days</div></div>:
+                <div><span id="days">00</span><div class="timer-label">Days</div></div>:
                 <div><span id="hours">23</span><div class="timer-label">Hours</div></div>:
                 <div><span id="minutes">59</span><div class="timer-label">Mins</div></div>:
                 <div><span id="seconds">59</span><div class="timer-label">Secs</div></div>
@@ -480,49 +486,49 @@
     </footer>
 
     <script>
-        function getDeadline() {
-            const storedDeadline = localStorage.getItem('eliteTechSkillDeadline');
-            if (storedDeadline) {
-                const deadlineDate = new Date(parseInt(storedDeadline));
-                if (new Date() > deadlineDate) {
-                    return setNewDeadline();
-                }
-                return deadlineDate;
-            } else {
-                return setNewDeadline();
-            }
-        }
+        // ---------------------------------------------------
+        // UPDATED LOGIC: 24-HOUR RESET ON EVERY REFRESH
+        // ---------------------------------------------------
 
-        function setNewDeadline() {
-            const now = new Date();
-            // Add 48 hours
-            const deadline = new Date(now.getTime() + (2 * 24 * 60 * 60 * 1000));
-            localStorage.setItem('eliteTechSkillDeadline', deadline.getTime().toString());
-            return deadline;
-        }
+        // 1. Get current time
+        const now = new Date().getTime();
 
-        const countDownDate = getDeadline();
+        // 2. Set deadline to 24 hours (1 day) from right now
+        //    Calculation: 1 day * 24 hours * 60 min * 60 sec * 1000 ms
+        const countDownDate = now + (1 * 24 * 60 * 60 * 1000);
 
+        // 3. Update the count down every 1 second
         const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
 
+            // Get today's date and time
+            const nowTick = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            const distance = countDownDate - nowTick;
+
+            // Time calculations for days, hours, minutes and seconds
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+            // Output the result in elements with id
             document.getElementById("days").innerHTML = (days < 10 ? "0" : "") + days;
             document.getElementById("hours").innerHTML = (hours < 10 ? "0" : "") + hours;
             document.getElementById("minutes").innerHTML = (minutes < 10 ? "0" : "") + minutes;
             document.getElementById("seconds").innerHTML = (seconds < 10 ? "0" : "") + seconds;
 
+            // If the count down is finished
             if (distance < 0) {
                 clearInterval(x);
                 document.getElementById("countdown").innerHTML = "OFFER EXPIRED";
-                document.querySelector(".btn").innerText = "Join Waitlist";
             }
         }, 1000);
     </script>
+</body>
+</html>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
 </body>
 </html>
